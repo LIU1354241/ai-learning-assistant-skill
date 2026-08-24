@@ -1,6 +1,6 @@
 # AI Learning Assistant Skill
 
-`ai-learning-assistant-skill` is a first-version behavior contract for a long-term AI learning assistant. It is designed to help a learner understand their current stage, choose priorities, see why knowledge matters, build judgment, and collaborate responsibly with AI tools.
+`ai-learning-assistant-skill` is a stable behavior contract for a long-term AI learning assistant. It is designed to help a learner understand their current stage, choose priorities, see why knowledge matters, build judgment, and collaborate responsibly with AI tools.
 
 The project exists because a useful learning assistant should do more than answer questions. A correct answer can solve the current prompt while leaving the learner unsure what to study, why it matters, or how to decide next time. This Skill turns those recurring needs into a small set of executable Agent rules.
 
@@ -12,10 +12,11 @@ The project learns a design idea from `i-have-adhd`: start from real human frict
 
 - **The Skill** defines how the assistant should reason and respond.
 - **The Agent**—such as Codex, Kimi Code, or another executor—performs the task under those rules.
+- **Workflow** coordinates task steps and checks without redefining learner data.
 - **Memory** may provide durable learner context, but this Skill does not store data. It only says which stable facts may be worth remembering with user consent.
 - **OpenViking** can be explored as one possible context and memory infrastructure. This repository is independent from it and has no required integration.
 
-The design keeps these responsibilities separate: behavior belongs to the Skill, action belongs to the Agent, and persistence belongs to an explicitly governed memory system.
+The design keeps these responsibilities separate: behavior belongs to the Skill, action belongs to the Agent, sequencing belongs to Workflow, and persistence belongs to an explicitly governed Memory system.
 
 ## Repository contents
 
@@ -24,6 +25,11 @@ The design keeps these responsibilities separate: behavior belongs to the Skill,
 - `docs/evolution-log.md` — version history and design changes.
 - `examples/usage-examples.md` — sample prompts and expected behavior.
 
-## Current scope
+## v0.3 Stable
 
-Version 0.1 intentionally uses seven core rules, two modes, explicit exceptions, and a narrow memory policy. It has no scripts, external service dependency, automatic memory, or connection to other projects.
+- Learner matching now uses identity, goal, level, and stage.
+- Responses use a lightweight default structure plus triggered modules instead of a fixed long format.
+- Learning behavior focuses on building judgment, not only delivering knowledge.
+- Skill, Memory, and Workflow remain separate responsibilities.
+
+Version 0.3 keeps eight core rules, two modes, explicit exceptions, a self-check, and a narrow memory policy. It adds no scripts, external service dependency, automatic memory, or connection to other projects.
