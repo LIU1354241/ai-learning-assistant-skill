@@ -1,38 +1,29 @@
 # AI Learning Assistant Skill
 
-`ai-learning-assistant-skill` is a stable behavior contract for a long-term AI learning assistant. It is designed to help a learner understand their current stage, choose priorities, see why knowledge matters, build judgment, and collaborate responsibly with AI tools.
+**English** | [简体中文](README.zh-CN.md)
 
-The project exists because a useful learning assistant should do more than answer questions. A correct answer can solve the current prompt while leaving the learner unsure what to study, why it matters, or how to decide next time. This Skill turns those recurring needs into a small set of executable Agent rules.
+> A truth-first AI learning assistant skill for evidence-aware teaching, representation selection, learner-state handling, and reliable Agent execution.
 
-## What it learns from i-have-adhd
+`ai-learning-assistant-skill` is a behavioral contract for building long-term AI learning assistants.
 
-The project learns a design idea from `i-have-adhd`: start from real human friction and behavioral patterns, then translate them into concrete guidance an AI Agent can follow. It does not copy that project's content, assume that every learner has ADHD, or reproduce its implementation. The reusable lesson is the path from **human need → behavioral rule → boundary → testable response**.
+The project focuses on a simple idea:
 
-## Relationship to OpenViking, Memory, and Agents
+> **A useful learning assistant should not only answer correctly. It should also know what is verified, what is inferred, what the learner actually needs, and when an Agent should stop, continue, or ask for evidence.**
 
-- **The Skill** defines how the assistant should reason and respond.
-- **The Agent**—such as Codex, Kimi Code, or another executor—performs the task under those rules.
-- **Workflow** coordinates task steps and checks without redefining learner data.
-- **Memory** may provide durable learner context, but this Skill does not store data. It only says which stable facts may be worth remembering with user consent.
-- **OpenViking** can be explored as one possible context and memory infrastructure. This repository is independent from it and has no required integration.
+## Core Principles
 
-The design keeps these responsibilities separate: behavior belongs to the Skill, action belongs to the Agent, sequencing belongs to Workflow, and persistence belongs to an explicitly governed Memory system.
+- **Truth First** — never turn guesses, simplifications, or unverified information into facts.
+- **Shortest Effective Answer** — answer the real question first and expand only when useful.
+- **Evidence-Aware Learning** — learner capability is based on evidence, not labels or assumptions.
+- **Question → Information Need → Representation** — choose diagrams, flows, tables, steps, or plain text based on what the user actually needs to understand.
+- **Visual Truth** — diagrams must not invent nodes, relationships, states, or changes.
+- **Agent Transparency** — execution should clearly separate what was done, what was verified, and what remains unverified.
 
-## Repository contents
+## Project Status
 
-- `SKILL.md` — concise instructions read by an AI Agent.
-- `docs/design-notes.md` — the reasoning from learner pain points to Skill behavior.
-- `docs/evolution-log.md` — version history and design changes.
-- `examples/usage-examples.md` — sample prompts and expected behavior.
+This project is under active development.
 
-## v0.3 Stable
-
-- Learner matching now uses identity, goal, level, and stage.
-- Responses use a lightweight default structure plus triggered modules instead of a fixed long format.
-- Learning behavior focuses on building judgment, not only delivering knowledge.
-- Skill, Memory, and Workflow remain separate responsibilities.
-
-Version 0.3 keeps eight core rules, two modes, explicit exceptions, a self-check, and a narrow memory policy. It adds no scripts, external service dependency, automatic memory, or connection to other projects.
+Stable and experimental candidates are developed through behavioral testing, red-team cases, regression checks, and cross-model evaluation.
 
 ## License
 
