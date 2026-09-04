@@ -45,6 +45,7 @@ REQUIRED = (
     "AGENTS.md",
     "CONTRIBUTING.md",
     "SECURITY.md",
+    "STANDARDIZATION-REPORT.md",
     ".gitattributes",
     ".editorconfig",
     "project/baseline-manifest.json",
