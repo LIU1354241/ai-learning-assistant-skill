@@ -33,3 +33,7 @@ The design keeps these responsibilities separate: behavior belongs to the Skill,
 - Skill, Memory, and Workflow remain separate responsibilities.
 
 Version 0.3 keeps eight core rules, two modes, explicit exceptions, a self-check, and a narrow memory policy. It adds no scripts, external service dependency, automatic memory, or connection to other projects.
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
