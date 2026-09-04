@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "baseline": "candidate-04",
+  "status": "FROZEN",
+  "role": "CURRENT_BASELINE",
+  "freeze_commit": "164c4d99d06841001ede1d06e6335bc105c5c3bc",
+  "freeze_commit_abbrev": "164c4d9",
+  "canonical_skill": "SKILL.md",
+  "frozen_source": "SKILL-v0.6-candidate-04-failure-aware-degradation.md",
+  "sha256": "c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa",
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE"
+  },
+  "frozen_evidence": {
+    "SKILL-v0.6-candidate-04-failure-aware-degradation-test-record.md": "9281f8c0e2b2b31c43ed68a891aa699aebf37325d109eb9b3d8dca538c31921b",
+    "tests/candidate-04/cross-model-review.md": "8768798513014b60274e96893d77ab31e3d9c5a12c6aa3fc9aff30387e5dadee",
+    "tests/candidate-04/expected-behavior.md": "6a45305ef1a71869e35d7f2aa8472d18c62c5717a3f643026f2570f5c3f340d0",
+    "tests/candidate-04/failure-analysis.md": "cad630f19c08e944bc855cc1eb315f0615271ac645e1cfce4279eb6ad213d080",
+    "tests/candidate-04/fixtures/webshop-app/LICENSE": "67c6d8e317f7f277d082a68f681c2f768bf5b016b062d78b058ee4b3b2fb670c",
+    "tests/candidate-04/fixtures/webshop-app/README.md": "acccb6414facf2bf7e817d85cd1133502c84c28e4c82020752da332de64ede7f",
+    "tests/candidate-04/fixtures/webshop-app/src/order.py": "a5843167f75706fb3edd5c6ae69306e7f3ec66183020be31665137787be753a3",
+    "tests/candidate-04/harness.md": "37824d381b751ccdfea51dac32e9047675d7e1c2384350dd4bba7e961a638686",
+    "tests/candidate-04/r3-targeted-retest.md": "0bc4c534ec5434dd2cd4c311d3b403ce8cb1fab976a763900bb96fec4df85d41",
+    "tests/candidate-04/regression-summary.md": "6f2f1374c54d01a694f3d53290d8ae4e251d2c6965fe925df375ac787c8808b7",
+    "tests/candidate-04/results.md": "0ba18fcc8771d2032cb40bb2c1d660bf5b4aee23db54a1233d0a0e63a3d5bf3a",
+    "tests/candidate-04/test-cases.md": "0f8347f8c094ed4f12f838ace6d4d567fe5491ba9a94d00c2e9d2ffa12153bb1"
+  }
+}
+

@@ -1,0 +1,21 @@
+schema_version: 1
+project: ai-learning-assistant-skill
+work_name: AI Learning Standardization — AgentOS Readiness v0.1
+stable_version: v0.6
+baseline:
+  id: candidate-04
+  status: FROZEN
+  role: CURRENT_BASELINE
+  freeze_commit: 164c4d99d06841001ede1d06e6335bc105c5c3bc
+  canonical_skill: SKILL.md
+  frozen_source: SKILL-v0.6-candidate-04-failure-aware-degradation.md
+  sha256: c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa
+current_diagnostic:
+  id: candidate-05
+  name: Learner Evidence Conflict
+  status: DIAGNOSTIC
+  role: CURRENT_DIAGNOSTIC
+  baseline_change_allowed: false
+next_action: Clean R0 evaluation and finding classification.
+private_holdout_location: repository-external AgentOS Verifier storage
+
