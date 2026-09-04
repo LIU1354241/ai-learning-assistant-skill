@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-learning-assistant/result.schema.json",
+  "title": "AI Learning Assistant evaluation result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "case_id",
+    "baseline",
+    "freeze_commit",
+    "skill_sha256",
+    "executor_model",
+    "judge_model",
+    "fresh_context",
+    "verdict",
+    "failure_class",
+    "raw_output_path",
+    "timestamp"
+  ],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "case_id": {"type": "string", "minLength": 1},
+    "baseline": {"const": "candidate-04"},
+    "freeze_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "skill_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "executor_model": {"type": "string", "minLength": 1},
+    "judge_model": {"type": "string", "minLength": 1},
+    "fresh_context": {"type": "boolean"},
+    "verdict": {
+      "enum": ["PASS", "PARTIAL", "FAIL", "BLOCKED", "INVALID_TEST"]
+    },
+    "failure_class": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "SKILL_RULE_GAP",
+        "MODEL_COMPLIANCE",
+        "PROMPT_LEAKAGE",
+        "HARNESS_DEFECT",
+        "EVALUATOR_VARIANCE",
+        "TOOL_OR_ENVIRONMENT",
+        "CONTEXT_MISSING",
+        "UNKNOWN"
+      ]
+    },
+    "raw_output_path": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
