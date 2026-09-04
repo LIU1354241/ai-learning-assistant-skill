@@ -10,6 +10,10 @@ hypothesis: >
   learner capability evidence conflict.
 rule_file_created: false
 baseline_change_allowed: false
+evaluation_status: ONE_ENVIRONMENT_COMPLETE
+latest_run: c05-r0-clean-20260905-codex-work
+latest_run_result: 5_PASS
+second_model_status: PENDING_EXTERNAL
 executor_cases: tests/candidate-05/test-cases.md
 judge_expectations: tests/candidate-05/expected-behavior.md
 historical_invalid_test: tests/candidate-05/test-cases-r0-leaky.md

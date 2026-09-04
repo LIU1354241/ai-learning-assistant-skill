@@ -1,0 +1,21 @@
+{
+  "run_id": "c05-r0-clean-20260905-codex-work",
+  "candidate": "candidate-05",
+  "baseline": "candidate-04",
+  "freeze_commit": "164c4d99d06841001ede1d06e6335bc105c5c3bc",
+  "skill_sha256": "c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa",
+  "executor_model": "codex-work-agent-model-not-exposed",
+  "judge_model": "codex-work-agent-model-not-exposed",
+  "environment": "ChatGPT Work collaboration Agent; exact model identifier not exposed",
+  "fresh_context": true,
+  "timestamp": "2026-09-05T00:12:24+08:00",
+  "case_ids": [
+    "REG-C04-EVIDENCE-01",
+    "REG-C04-EVIDENCE-02",
+    "REG-C04-TRANSFER-01",
+    "C05-DIAG-CONFLICT-01",
+    "REG-C04-SCOPE-01"
+  ],
+  "raw_output_directory": "evals/runs/c05-r0-clean-20260905-codex-work/raw-output",
+  "notes": "One available Codex Work execution environment. Each case used a separate fresh Agent context. Kimi and a second independent model environment were unavailable; no second-model completion is claimed."
+}

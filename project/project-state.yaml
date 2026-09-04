@@ -16,6 +16,9 @@ current_diagnostic:
   status: DIAGNOSTIC
   role: CURRENT_DIAGNOSTIC
   baseline_change_allowed: false
-next_action: Clean R0 evaluation and finding classification.
+  evaluation_status: ONE_ENVIRONMENT_COMPLETE
+  latest_run: c05-r0-clean-20260905-codex-work
+  latest_run_result: 5_PASS
+  second_model_status: PENDING_EXTERNAL
+next_action: Complete Clean R0 evaluation and finding classification with a real second independent model environment.
 private_holdout_location: repository-external AgentOS Verifier storage
-

@@ -24,6 +24,17 @@ LEGAL_STATES = {
     "CLOSED_NO_CHANGE",
     "BLOCKED",
 }
+VERDICTS = {"PASS", "PARTIAL", "FAIL", "BLOCKED", "INVALID_TEST"}
+FAILURE_CLASSES = {
+    "SKILL_RULE_GAP",
+    "MODEL_COMPLIANCE",
+    "PROMPT_LEAKAGE",
+    "HARNESS_DEFECT",
+    "EVALUATOR_VARIANCE",
+    "TOOL_OR_ENVIRONMENT",
+    "CONTEXT_MISSING",
+    "UNKNOWN",
+}
 REQUIRED = (
     "SKILL.md",
     "SKILL-v0.6-candidate-04-failure-aware-degradation.md",
@@ -136,6 +147,8 @@ def main() -> int:
     check(not duplicates, f"no duplicate canonical case IDs{': ' + ', '.join(duplicates) if duplicates else ''}")
 
     jsonl_ok = True
+    global_results: list[dict[str, object]] = []
+    seen_results: set[tuple[object, object]] = set()
     results_path = ROOT / "evals/results.jsonl"
     if results_path.is_file():
         for number, line in enumerate(results_path.read_text(encoding="utf-8").splitlines(), start=1):
@@ -155,7 +168,93 @@ def main() -> int:
             if not required_fields.issubset(record):
                 print(f"FAIL: evals/results.jsonl:{number}: missing required fields")
                 jsonl_ok = False
+                continue
+            key = (record.get("run_id"), record.get("case_id"))
+            if key in seen_results:
+                print(f"FAIL: evals/results.jsonl:{number}: duplicate run/case result {key}")
+                jsonl_ok = False
+            seen_results.add(key)
+            if record.get("baseline") != baseline.get("baseline"):
+                print(f"FAIL: evals/results.jsonl:{number}: baseline mismatch")
+                jsonl_ok = False
+            if record.get("freeze_commit") != baseline.get("freeze_commit"):
+                print(f"FAIL: evals/results.jsonl:{number}: freeze commit mismatch")
+                jsonl_ok = False
+            if record.get("skill_sha256") != baseline.get("sha256"):
+                print(f"FAIL: evals/results.jsonl:{number}: Skill SHA mismatch")
+                jsonl_ok = False
+            if record.get("verdict") not in VERDICTS:
+                print(f"FAIL: evals/results.jsonl:{number}: illegal verdict")
+                jsonl_ok = False
+            failure_class = record.get("failure_class")
+            if failure_class is not None and failure_class not in FAILURE_CLASSES:
+                print(f"FAIL: evals/results.jsonl:{number}: illegal failure class")
+                jsonl_ok = False
+            if record.get("verdict") == "PASS" and failure_class is not None:
+                print(f"FAIL: evals/results.jsonl:{number}: PASS must use null failure_class")
+                jsonl_ok = False
+            if record.get("verdict") != "PASS" and failure_class is None:
+                print(f"FAIL: evals/results.jsonl:{number}: non-PASS requires failure_class")
+                jsonl_ok = False
+            if not isinstance(record.get("fresh_context"), bool):
+                print(f"FAIL: evals/results.jsonl:{number}: fresh_context must be boolean")
+                jsonl_ok = False
+            raw_path = record.get("raw_output_path")
+            if not isinstance(raw_path, str) or Path(raw_path).is_absolute() or ".." in Path(raw_path).parts:
+                print(f"FAIL: evals/results.jsonl:{number}: unsafe raw_output_path")
+                jsonl_ok = False
+            elif not (ROOT / raw_path).is_file():
+                print(f"FAIL: evals/results.jsonl:{number}: raw output is missing")
+                jsonl_ok = False
+            global_results.append(record)
     check(jsonl_ok, "evaluation JSONL parses and contains required fields")
+
+    run_records_ok = True
+    local_results: list[dict[str, object]] = []
+    for manifest_path in sorted((ROOT / "evals/runs").glob("*/manifest.json")):
+        try:
+            run_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: {exc}")
+            run_records_ok = False
+            continue
+        run_id = manifest_path.parent.name
+        manifest_required = {
+            "run_id", "candidate", "baseline", "freeze_commit", "skill_sha256",
+            "executor_model", "judge_model", "environment", "fresh_context",
+            "timestamp", "case_ids", "raw_output_directory",
+        }
+        if not manifest_required.issubset(run_manifest):
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: missing required fields")
+            run_records_ok = False
+        if run_manifest.get("run_id") != run_id:
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: run_id does not match directory")
+            run_records_ok = False
+        if run_manifest.get("baseline") != baseline.get("baseline") or run_manifest.get("freeze_commit") != baseline.get("freeze_commit") or run_manifest.get("skill_sha256") != baseline.get("sha256"):
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: baseline metadata mismatch")
+            run_records_ok = False
+        case_ids = run_manifest.get("case_ids")
+        if not isinstance(case_ids, list) or not case_ids or len(case_ids) != len(set(case_ids)):
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: case_ids must be a non-empty unique list")
+            run_records_ok = False
+        raw_directory = run_manifest.get("raw_output_directory")
+        if not isinstance(raw_directory, str) or Path(raw_directory).is_absolute() or not (ROOT / raw_directory).is_dir():
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: invalid raw_output_directory")
+            run_records_ok = False
+        judgments_path = manifest_path.parent / "judgments.jsonl"
+        if judgments_path.is_file():
+            for number, line in enumerate(judgments_path.read_text(encoding="utf-8").splitlines(), start=1):
+                if not line.strip():
+                    continue
+                try:
+                    local_results.append(json.loads(line))
+                except json.JSONDecodeError as exc:
+                    print(f"FAIL: {judgments_path.relative_to(ROOT)}:{number}: {exc}")
+                    run_records_ok = False
+    check(run_records_ok, "run manifests and run-local judgments are structurally valid")
+    normalized_global = {json.dumps(item, sort_keys=True) for item in global_results}
+    normalized_local = {json.dumps(item, sort_keys=True) for item in local_results}
+    check(normalized_global == normalized_local, "global and run-local JSONL results are consistent")
 
     project_text = (ROOT / "project/project-state.yaml").read_text(encoding="utf-8")
     project_baseline = section(project_text, "baseline")

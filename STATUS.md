@@ -26,9 +26,10 @@ Candidate 05 is not:
 - validated;
 - baseline behavior.
 
-Next action: Clean R0 evaluation and finding classification.
+Evaluation status: one Codex Work environment completed 5/5 clean cases with an independent Judge; all five were `PASS`. Exact model identifiers were not exposed.
+
+Next action: Complete Clean R0 evaluation and finding classification with a real second independent model environment. Kimi is awaiting external/manual execution and import.
 
 Known limitation: the original untracked Candidate 05 R0 files from the Windows working tree were not present in the authoritative remote clone. Exact historical bytes await import; no verbatim recovery is claimed.
 
 No Candidate 05 rule file exists. Candidate 04 behavior remains frozen.
-

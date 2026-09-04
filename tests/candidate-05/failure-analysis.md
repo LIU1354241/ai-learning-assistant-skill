@@ -2,6 +2,8 @@
 
 Status: `NO_CLASSIFIED_CLEAN_FAILURES`
 
+The first available Clean R0 run (`c05-r0-clean-20260905-codex-work`) received 5/5 `PASS` from an independent Judge. It produced no failure to classify. The absence of a second independent model run is an evaluation-completeness limitation, not evidence of a Skill failure.
+
 Create a finding only after a real Clean R0 output has received an independent verdict. Each finding records:
 
 - finding ID;
