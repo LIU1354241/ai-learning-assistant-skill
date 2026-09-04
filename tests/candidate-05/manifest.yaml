@@ -1,0 +1,24 @@
+schema_version: 1
+id: candidate-05
+name: Learner Evidence Conflict
+kind: diagnostic
+status: DIAGNOSTIC
+role: CURRENT_DIAGNOSTIC
+baseline: candidate-04
+hypothesis: >
+  Candidate 04 may not define sufficiently clear behavior when old and new
+  learner capability evidence conflict.
+rule_file_created: false
+baseline_change_allowed: false
+executor_cases: tests/candidate-05/test-cases.md
+judge_expectations: tests/candidate-05/expected-behavior.md
+historical_invalid_test: tests/candidate-05/test-cases-r0-leaky.md
+historical_invalid_test_verdict: INVALID_TEST
+historical_invalid_test_failure_class: PROMPT_LEAKAGE
+original_untracked_source: unavailable_in_remote_clone
+old_id_mappings:
+  C05-01: REG-C04-EVIDENCE-01
+  C05-02: REG-C04-EVIDENCE-02
+  C05-03: REG-C04-TRANSFER-01
+  C05-04: C05-DIAG-CONFLICT-01
+  C05-05: REG-C04-SCOPE-01
