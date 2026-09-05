@@ -77,4 +77,4 @@ Exact tracked file changed by promotion: `SKILL.md` only. The frozen source and 
 
 ## Candidate 05 starting-state limitation
 
-The authoritative remote checkpoint did not contain `tests/candidate-05/`. The user's Windows repository was expected to contain untracked Candidate 05 files, but that local drive is not mounted in this Work environment. This clone did not delete or overwrite those local files. Their exact bytes were unavailable at the start of standardization and must not be represented as recovered verbatim evidence.
+The authoritative remote checkpoint did not contain `tests/candidate-05/`. The user's Windows repository was expected to contain untracked Candidate 05 files, but that local drive was not mounted in this Work environment at the start of standardization. This clone did not delete or overwrite those local files. Their exact bytes were unavailable at the starting checkpoint; they were subsequently recovered and imported byte-for-byte under `tests/candidate-05/history/windows-main-164c4d9-untracked/` as historical untracked evidence, not as content from commit `164c4d9`.

@@ -30,7 +30,7 @@ Critical unresolved findings: `0 P0`
 
 AgentOS readiness: `NOT_READY`
 
-The repository's structural and frozen-baseline checks pass, and the fresh-Agent handoff smoke test passes. The overall verdict remains `NEEDS_FIX` because required evidence is incomplete: the second independent model run has not occurred, the exact original untracked Candidate 05 R0 bytes have not been imported, and Candidate 01/02 provenance is missing from Git history.
+The repository's structural and frozen-baseline checks pass, and the fresh-Agent handoff smoke test passes. The overall verdict remains `NEEDS_FIX` because required evidence is incomplete: the second independent model run has not occurred, and Candidate 01/02 provenance is missing from Git history. The exact original untracked Candidate 05 R0 bytes have now been imported as immutable historical evidence.
 
 No release tag was created.
 
@@ -54,7 +54,7 @@ No release tag was created.
 ### Candidate 05 test cleanup
 
 - Kept Candidate 05 as `DIAGNOSTIC / CURRENT_DIAGNOSTIC` with `baseline_change_allowed: false` and no rule file.
-- Preserved the recoverable historical leakage evidence as `INVALID_TEST / PROMPT_LEAKAGE`, without falsely claiming byte-for-byte recovery of unavailable Windows files.
+- Preserved the reconstructed historical leakage note without falsely claiming it was the original, then imported the recovered Windows originals byte-for-byte as immutable `INVALID_TEST / PROMPT_LEAKAGE` evidence.
 - Created neutral Executor cases and a separate Judge-only expectations file.
 - Preserved all old ID mappings:
   - `C05-01` → `REG-C04-EVIDENCE-01`
@@ -166,8 +166,7 @@ None.
 ### P1
 
 1. **C05-EVAL-001 — Second independent model pending.** Kimi/direct second-model execution is unavailable in this environment. Run the prepared manual Kimi packets and import real outputs and independent judgments.
-2. **C05-PROV-001 — Exact original leaky R0 unavailable.** The untracked Windows source was not in the remote clone. Import it as immutable historical invalid-test evidence and record its SHA without overwriting the reconstructed provenance note.
-3. **HISTORY-PROV-001 — Candidate 01/02 history incomplete.** Formal sources, rationale, deltas, and test records are absent from current Git history. Import authoritative artifacts or explicitly accept the documented provenance gap.
+2. **HISTORY-PROV-001 — Candidate 01/02 history incomplete.** Formal sources, rationale, deltas, and test records are absent from current Git history. Import authoritative artifacts or explicitly accept the documented provenance gap.
 
 ### P2
 

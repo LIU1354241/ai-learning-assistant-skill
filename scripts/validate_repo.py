@@ -68,6 +68,7 @@ REQUIRED = (
 )
 ABSOLUTE_WINDOWS_PATH = re.compile(r"(?i)(?<![A-Za-z0-9])[A-Z]:[\\/]")
 TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".jsonl", ".py", ".txt"}
+HISTORICAL_SOURCE_PROVENANCE = "tests/candidate-05/history/windows-main-164c4d9-untracked/provenance.yaml"
 
 
 def field(text: str, key: str) -> str | None:
@@ -285,12 +286,15 @@ def main() -> int:
     for path in tracked_paths():
         if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
             continue
+        relative = path.relative_to(ROOT).as_posix()
+        if relative == HISTORICAL_SOURCE_PROVENANCE:
+            continue
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
         if ABSOLUTE_WINDOWS_PATH.search(text):
-            path_findings.append(path.relative_to(ROOT).as_posix())
+            path_findings.append(relative)
     check(not path_findings, f"no unnecessary Windows absolute paths{': ' + ', '.join(path_findings) if path_findings else ''}")
 
     tracked = [path.relative_to(ROOT).as_posix() for path in tracked_paths()]

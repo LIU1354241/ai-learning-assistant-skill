@@ -16,10 +16,14 @@ latest_run_result: 5_PASS
 second_model_status: PENDING_EXTERNAL
 executor_cases: tests/candidate-05/test-cases.md
 judge_expectations: tests/candidate-05/expected-behavior.md
-historical_invalid_test: tests/candidate-05/test-cases-r0-leaky.md
+historical_invalid_test: tests/candidate-05/history/windows-main-164c4d9-untracked/test-cases.md
 historical_invalid_test_verdict: INVALID_TEST
 historical_invalid_test_failure_class: PROMPT_LEAKAGE
-original_untracked_source: unavailable_in_remote_clone
+historical_reconstruction: tests/candidate-05/test-cases-r0-leaky.md
+historical_reconstruction_byte_for_byte_original: false
+original_untracked_source: tests/candidate-05/history/windows-main-164c4d9-untracked/
+original_untracked_source_status: RECOVERED_IMPORTED
+original_untracked_source_provenance: tests/candidate-05/history/windows-main-164c4d9-untracked/provenance.yaml
 old_id_mappings:
   C05-01: REG-C04-EVIDENCE-01
   C05-02: REG-C04-EVIDENCE-02

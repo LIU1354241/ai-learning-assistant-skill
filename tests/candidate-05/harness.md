@@ -32,4 +32,4 @@ When Kimi is not callable from the active environment, use `manual-kimi-run.md`.
 
 ## Original R0
 
-`test-cases-r0-leaky.md` is historical invalid-test evidence and is excluded from all execution. The exact untracked Windows source still requires an external import if its original bytes are to be preserved.
+`test-cases-r0-leaky.md` is a reconstructed historical invalid-test note and is excluded from all execution. The recovered Windows originals are preserved under `history/windows-main-164c4d9-untracked/` as `INVALID_TEST / PROMPT_LEAKAGE` evidence and are also excluded from execution.

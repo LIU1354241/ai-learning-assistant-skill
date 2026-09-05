@@ -8,9 +8,9 @@ Execution eligibility: `NEVER_EXECUTE`
 
 ## Provenance boundary
 
-The original R0 files were untracked in the user's Windows working tree and were not present in the authoritative remote clone used for standardization. Their exact bytes are unavailable in this environment. This file preserves the known historical leakage evidence recovered from the project discussion; it does not claim to be a byte-for-byte copy of the unavailable R0.
+The original R0 files were untracked in the user's Windows working tree and were not present in the authoritative remote clone used for standardization. Their exact bytes were unavailable when this reconstruction was created. This file preserves the known historical leakage evidence recovered from the project discussion; it does not claim to be a byte-for-byte copy of the original R0.
 
-If the original file is later imported, preserve it as a separate immutable artifact, record its SHA-256, and do not overwrite this provenance note without an explicit reconciliation record.
+The recovered originals are now preserved separately as immutable historical evidence under `tests/candidate-05/history/windows-main-164c4d9-untracked/`; their hashes and relationship to this reconstruction are recorded in that directory's `provenance.yaml`.
 
 ## Known answer-leaking clauses
 
