@@ -6,7 +6,7 @@ Date: `2026-09-05`
 
 ## Verdict
 
-Verdict: `NEEDS_FIX`
+Verdict: `READY`
 
 Current baseline: Candidate 04
 
@@ -28,9 +28,11 @@ Candidate 05 outcome: `DIAGNOSTIC`
 
 Critical unresolved findings: `0 P0`
 
-AgentOS readiness: `NOT_READY`
+AgentOS readiness: `READY`
 
-The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence satisfies the two-Executor-environment requirement, and the final post-reconciliation fresh-Agent smoke test now has a preserved `PASS` result. The overall verdict remains `NEEDS_FIX` because a hosted CI result is still pending. Candidate 01/02 authoritative artifacts remain unavailable, but the absence is explicitly recorded without invented rationale or tests. The exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence.
+Unresolved release blockers: `0`
+
+The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence satisfies the two-Executor-environment requirement, and the final post-reconciliation fresh-Agent smoke test has a preserved `PASS` result. Hosted CI was independently observed by the owner as `PASS / green` for commit `30a9c7871ba3c9f42f08bacaed573894c29adbe7` in workflow `Validate repository`. No GitHub Actions run ID, run URL, timestamp, job ID, environment metadata, or other external metadata was supplied or inferred. Candidate 01/02 authoritative artifacts remain unavailable as recorded non-blocking provenance gaps, and the exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence. All AgentOS readiness gates are satisfied, and the repository is eligible for the owner's release decision.
 
 No release tag was created.
 
@@ -148,6 +150,8 @@ The final fresh-Agent smoke was subsequently completed against `chore/ai-learnin
 
 GitHub-hosted CI was configured but was not claimed as observed before the final branch push.
 
+The owner subsequently observed workflow `Validate repository` as `PASS / green` for commit `30a9c7871ba3c9f42f08bacaed573894c29adbe7`, whose commit message is `ci: fetch full history for baseline verification`. No additional run metadata was supplied or inferred.
+
 ## Repository hygiene and security review
 
 Checked current files and every reachable Git blob for:
@@ -180,10 +184,10 @@ Not checked or not available:
 - full entropy-based secret scanning;
 - provider-side credential validity or revocation state;
 - GitHub branch protection, repository visibility, or Advanced Security settings;
-- a completed hosted CI run;
+- Hosted CI run metadata beyond the owner-supplied result, workflow, and validated commit;
 - security of a future AgentOS runtime or external Verifier store.
 
-## Unresolved findings
+## Findings
 
 ### P0
 
@@ -191,7 +195,11 @@ None.
 
 ### P1
 
-1. **CI-OBS-001 — Hosted CI pending.** The current branch has not been pushed and no hosted workflow result exists for the intended final commit.
+None.
+
+### Resolved
+
+1. **CI-OBS-001 — Hosted CI observation resolved.** This finding previously recorded Hosted CI as pending before the branch was pushed. The owner subsequently observed workflow `Validate repository` as `PASS / green` for commit `30a9c7871ba3c9f42f08bacaed573894c29adbe7`. It is no longer an active release blocker. No unsupplied run metadata was inferred.
 
 ### P2
 
@@ -227,4 +235,4 @@ Phase 3C is recorded by the commit containing this report update with message `t
 
 ## Release decision
 
-Do not create `v0.6.0-agent-ready` yet. The final fresh-Agent smoke evidence is complete and passing, but the intended release commit is not accepted while hosted CI remains pending. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.
+The final fresh-Agent smoke evidence and Hosted CI acceptance evidence are complete and passing, with no unresolved release blockers. The repository is eligible for the owner's next release decision. Review, merge, or create a release tag only if explicitly authorized. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.

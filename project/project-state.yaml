@@ -40,6 +40,11 @@ final_agentos_smoke:
   execution_timestamp: NOT_RECORDED
   raw_input: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/input.md
   raw_output: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/output.md
-hosted_ci_status: PENDING
-next_action: Push the standardization branch and obtain a passing hosted CI result, then perform final release acceptance.
+hosted_ci_status: PASS
+hosted_ci_validated_commit: 30a9c7871ba3c9f42f08bacaed573894c29adbe7
+hosted_ci_workflow: Validate repository
+hosted_ci_evidence: OWNER_OBSERVED_PASS_GREEN
+agentos_readiness: READY
+unresolved_release_blockers: 0
+next_action: Owner release decision; review, merge, or tag only if explicitly authorized.
 private_holdout_location: repository-external AgentOS Verifier storage
