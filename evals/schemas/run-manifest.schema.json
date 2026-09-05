@@ -10,11 +10,16 @@
     "freeze_commit",
     "skill_sha256",
     "executor_model",
+    "executor_session_context_identifier",
+    "fresh_context_evidence",
     "judge_model",
+    "judge_session_context_identifier",
+    "executor_judge_separation",
     "environment",
     "fresh_context",
     "timestamp",
     "case_ids",
+    "raw_input_packet_path",
     "raw_output_directory"
   ],
   "properties": {
@@ -24,7 +29,11 @@
     "freeze_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "skill_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "executor_model": {"type": "string", "minLength": 1},
+    "executor_session_context_identifier": {"type": "string", "minLength": 1},
+    "fresh_context_evidence": {"type": "string", "minLength": 1},
     "judge_model": {"type": "string", "minLength": 1},
+    "judge_session_context_identifier": {"type": "string", "minLength": 1},
+    "executor_judge_separation": {"type": "string", "minLength": 1},
     "environment": {"type": "string", "minLength": 1},
     "fresh_context": {"type": "boolean"},
     "timestamp": {"type": "string", "format": "date-time"},
@@ -34,6 +43,7 @@
       "uniqueItems": true,
       "items": {"type": "string", "minLength": 1}
     },
+    "raw_input_packet_path": {"type": "string", "minLength": 1},
     "raw_output_directory": {"type": "string", "minLength": 1},
     "notes": {"type": "string"}
   },

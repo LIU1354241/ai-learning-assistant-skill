@@ -1,5 +1,7 @@
 # Candidate 05 — Manual Kimi Clean R0
 
+The canonical final external package is split into `evals/packages/candidate-05-kimi-clean-r0/executor-packet.md` and the separately controlled `judge-packet.md`. Use that package for the next run. This file is retained as the earlier manual packet record and must not be combined with Judge material.
+
 Use a separate new Kimi conversation for each packet. Load the repository's verified `SKILL.md` as the Skill instruction, then provide only one packet below. Do not attach `expected-behavior.md` or any prior model output.
 
 After each response, save the complete unedited text as:

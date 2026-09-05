@@ -17,8 +17,8 @@ The Executor never receives `expected-behavior.md`, a forbidden-behavior list, a
 3. Load `SKILL.md` as the behavioral instruction without altering it.
 4. Supply exactly one clean case packet.
 5. Save the complete raw response without corrections.
-6. Record model, environment, timestamp, context freshness, and tool availability in the run manifest.
-7. Give the raw output and `expected-behavior.md` to a Judge that did not produce that output.
+6. Record the exact input packet path, model, exposed session/context identifier, environment, timestamp, context freshness evidence, and tool availability in the run manifest and result.
+7. Give the raw output and `expected-behavior.md` to a Judge that did not produce that output; record the Judge model, exposed session/context identifier, and separation evidence.
 8. Record the verdict and failure class in both the run record and `evals/results.jsonl`.
 9. If a failure occurs, complete failure classification before proposing or editing any Skill.
 
@@ -28,7 +28,7 @@ Two labels or sessions from the same underlying model do not automatically estab
 
 ## Kimi manual path
 
-When Kimi is not callable from the active environment, use `manual-kimi-run.md`. Its packets contain no Judge material. Import returned raw outputs without editing and record the actual Kimi model shown by that environment.
+When Kimi is not callable from the active environment, use `evals/packages/candidate-05-kimi-clean-r0/executor-packet.md` and keep its sibling `judge-packet.md` out of every Executor context. Import returned raw outputs without editing and record the actual Kimi model shown by that environment or an explicit `NOT_EXPOSED` limitation.
 
 ## Original R0
 

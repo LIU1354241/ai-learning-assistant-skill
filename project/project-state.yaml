@@ -20,5 +20,11 @@ current_diagnostic:
   latest_run: c05-r0-clean-20260905-codex-work
   latest_run_result: 5_PASS
   second_model_status: PENDING_EXTERNAL
-next_action: Complete Clean R0 evaluation and finding classification with a real second independent model environment.
+  external_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
+  external_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
+final_agentos_smoke:
+  status: PENDING
+  protocol: audit/final-agentos-smoke-protocol.md
+hosted_ci_status: PENDING
+next_action: Run the external Kimi package, import real evidence, then run final fresh-Agent smoke and hosted CI.
 private_holdout_location: repository-external AgentOS Verifier storage

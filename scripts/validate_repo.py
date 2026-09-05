@@ -49,6 +49,7 @@ REQUIRED = (
     ".gitattributes",
     ".editorconfig",
     "project/baseline-manifest.json",
+    "project/history-provenance-gaps.yaml",
     "project/project-state.yaml",
     "project/candidate-index.yaml",
     "docs/candidate-lifecycle.md",
@@ -58,6 +59,9 @@ REQUIRED = (
     "tests/candidate-05/test-cases-r0-leaky.md",
     "tests/candidate-05/test-cases.md",
     "tests/candidate-05/expected-behavior.md",
+    "evals/packages/candidate-05-kimi-clean-r0/executor-packet.md",
+    "evals/packages/candidate-05-kimi-clean-r0/judge-packet.md",
+    "audit/final-agentos-smoke-protocol.md",
     "evals/schemas/run-manifest.schema.json",
     "evals/schemas/result.schema.json",
     "evals/results.jsonl",
@@ -164,8 +168,10 @@ def main() -> int:
                 continue
             required_fields = {
                 "run_id", "case_id", "baseline", "freeze_commit", "skill_sha256",
-                "executor_model", "judge_model", "fresh_context", "verdict",
-                "failure_class", "raw_output_path", "timestamp",
+                "executor_model", "executor_session_context_identifier", "fresh_context_evidence",
+                "judge_model", "judge_session_context_identifier", "executor_judge_separation",
+                "fresh_context", "verdict", "failure_class", "raw_input_packet_path",
+                "raw_output_path", "timestamp",
             }
             if not required_fields.issubset(record):
                 print(f"FAIL: evals/results.jsonl:{number}: missing required fields")
@@ -201,6 +207,20 @@ def main() -> int:
             if not isinstance(record.get("fresh_context"), bool):
                 print(f"FAIL: evals/results.jsonl:{number}: fresh_context must be boolean")
                 jsonl_ok = False
+            provenance_fields = {
+                "executor_model", "executor_session_context_identifier", "fresh_context_evidence",
+                "judge_model", "judge_session_context_identifier", "executor_judge_separation",
+            }
+            if any(not isinstance(record.get(name), str) or not record.get(name) for name in provenance_fields):
+                print(f"FAIL: evals/results.jsonl:{number}: provenance fields must be non-empty strings")
+                jsonl_ok = False
+            raw_input_path = record.get("raw_input_packet_path")
+            if not isinstance(raw_input_path, str) or Path(raw_input_path).is_absolute() or ".." in Path(raw_input_path).parts:
+                print(f"FAIL: evals/results.jsonl:{number}: unsafe raw_input_packet_path")
+                jsonl_ok = False
+            elif not (ROOT / raw_input_path).is_file():
+                print(f"FAIL: evals/results.jsonl:{number}: raw input packet is missing")
+                jsonl_ok = False
             raw_path = record.get("raw_output_path")
             if not isinstance(raw_path, str) or Path(raw_path).is_absolute() or ".." in Path(raw_path).parts:
                 print(f"FAIL: evals/results.jsonl:{number}: unsafe raw_output_path")
@@ -223,11 +243,20 @@ def main() -> int:
         run_id = manifest_path.parent.name
         manifest_required = {
             "run_id", "candidate", "baseline", "freeze_commit", "skill_sha256",
-            "executor_model", "judge_model", "environment", "fresh_context",
-            "timestamp", "case_ids", "raw_output_directory",
+            "executor_model", "executor_session_context_identifier", "fresh_context_evidence",
+            "judge_model", "judge_session_context_identifier", "executor_judge_separation",
+            "environment", "fresh_context", "timestamp", "case_ids",
+            "raw_input_packet_path", "raw_output_directory",
         }
         if not manifest_required.issubset(run_manifest):
             print(f"FAIL: {manifest_path.relative_to(ROOT)}: missing required fields")
+            run_records_ok = False
+        manifest_provenance_fields = {
+            "executor_model", "executor_session_context_identifier", "fresh_context_evidence",
+            "judge_model", "judge_session_context_identifier", "executor_judge_separation",
+        }
+        if any(not isinstance(run_manifest.get(name), str) or not run_manifest.get(name) for name in manifest_provenance_fields):
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: provenance fields must be non-empty strings")
             run_records_ok = False
         if run_manifest.get("run_id") != run_id:
             print(f"FAIL: {manifest_path.relative_to(ROOT)}: run_id does not match directory")
@@ -242,6 +271,10 @@ def main() -> int:
         raw_directory = run_manifest.get("raw_output_directory")
         if not isinstance(raw_directory, str) or Path(raw_directory).is_absolute() or not (ROOT / raw_directory).is_dir():
             print(f"FAIL: {manifest_path.relative_to(ROOT)}: invalid raw_output_directory")
+            run_records_ok = False
+        raw_input = run_manifest.get("raw_input_packet_path")
+        if not isinstance(raw_input, str) or Path(raw_input).is_absolute() or ".." in Path(raw_input).parts or not (ROOT / raw_input).is_file():
+            print(f"FAIL: {manifest_path.relative_to(ROOT)}: invalid raw_input_packet_path")
             run_records_ok = False
         judgments_path = manifest_path.parent / "judgments.jsonl"
         if judgments_path.is_file():

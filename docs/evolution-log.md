@@ -8,7 +8,7 @@ The current Git history preserves v0.1/v0.3 snapshots and formal Candidate 03/04
 
 Candidate 03's freeze record identifies its immediate frozen baseline as “02F Truth + Completion” and records that baseline's SHA-256. That proves Candidate 02F existed in the evaluation lineage, but it does not recover the missing Candidate 02A–02F history.
 
-This provenance gap is tracked as a documentation P1 until authoritative artifacts are imported.
+The final repository and reachable-history search found no authoritative Candidate 01/02 source or test artifacts. The explicit boundary is recorded in `project/history-provenance-gaps.yaml`. Authoritative evidence may be imported later without rewriting existing history; until then, no missing rationale or test sequence is claimed.
 
 ## v0.1 — Initial behavioral boundary (2026-08-24)
 
@@ -26,13 +26,13 @@ The repository history preserves v0.3 at commit `10e08a2`.
 
 ## Candidate 01 — Historical baseline, source evidence missing
 
-Candidate 01 is recorded as a former frozen baseline and is now `SUPERSEDED`. The current repository does not preserve its source, problem statement, behavioral delta, or test record. Standardization therefore does not claim why it changed or how it was validated. Importing authoritative evidence is required to complete this part of the lineage.
+Candidate 01 is recorded as a former frozen baseline and is now `SUPERSEDED`. The current repository does not preserve its source, problem statement, behavioral delta, or test record. Standardization therefore does not claim why it changed or how it was validated. This is an explicit provenance gap, not a reconstructed history; see `project/history-provenance-gaps.yaml`.
 
 ## Candidate 02 / 02F — Truth and completion lineage
 
 Candidate 02 is recorded as a former frozen baseline and is now `SUPERSEDED`. The Candidate 03 freeze record proves that its immediate predecessor was `02F Truth + Completion`, with recorded SHA-256 `f601e4ac00ef8c8c07cd77261355f73da9a1ba63a5b243918241cee194cb4219`.
 
-The inherited Candidate 03 source contains truth boundaries, topic-scoped learner evidence, lightweight verification, source handling, request completion, transfer boundaries, and execution transparency. However, because Candidate 02 source and tests are absent, this repository cannot assign each inherited behavior to a particular 02A–02F step or claim a verified reason/test sequence. That history remains intentionally unresolved rather than inferred.
+The inherited Candidate 03 source contains truth boundaries, topic-scoped learner evidence, lightweight verification, source handling, request completion, transfer boundaries, and execution transparency. However, because Candidate 02 source and tests are absent, this repository cannot assign each inherited behavior to a particular 02A–02F step or claim a verified reason/test sequence. That history remains intentionally unresolved rather than inferred and is recorded in `project/history-provenance-gaps.yaml`.
 
 ## Candidate 03 — Question → Information Need → Representation
 

@@ -1,0 +1,39 @@
+schema_version: 1
+recorded_date: 2026-09-05
+reviewed_head: e56386f09d632e021684788de14b0a37943d83e3
+record_type: explicit_historical_provenance_gap
+
+search_scope:
+  current_repository_tree: complete
+  reachable_git_history: complete
+  path_history_checked: true
+  content_references_checked: true
+
+authoritative_evidence_found:
+  candidate-01: false
+  candidate-02: false
+
+known_facts:
+  - Candidate 01 and Candidate 02 are known historical stages and are recorded as SUPERSEDED with was_frozen true.
+  - The Candidate 03 freeze record identifies 02F Truth + Completion as its immediate frozen baseline.
+  - The Candidate 03 freeze record gives the 02F SHA-256 as f601e4ac00ef8c8c07cd77261355f73da9a1ba63a5b243918241cee194cb4219.
+
+unavailable_evidence:
+  - Candidate 01 authoritative source and test artifacts.
+  - Candidate 01 verified rationale, behavioral delta, and validation sequence.
+  - Candidate 02 and 02A-02F authoritative source and test artifacts.
+  - Candidate 02 and 02A-02F verified rationale, behavioral deltas, and validation sequence.
+
+claims_not_made:
+  - No missing Candidate 01 or Candidate 02 rationale is reconstructed from assumptions.
+  - No missing test sequence, result, or promotion decision is invented.
+  - The surviving Candidate 03 reference is not represented as recovery of the missing 02F artifact.
+
+future_resolution:
+  owner_may_supply_authoritative_evidence: true
+  required_handling: import_as_provenance_without_rewriting_existing_history
+
+candidate_04_impact:
+  frozen_source_changed: false
+  frozen_evidence_changed: false
+  behavioral_effect: none

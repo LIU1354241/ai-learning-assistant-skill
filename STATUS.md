@@ -28,7 +28,7 @@ Candidate 05 is not:
 
 Evaluation status: one Codex Work environment completed 5/5 clean cases with an independent Judge; all five were `PASS`. Exact model identifiers were not exposed.
 
-Next action: Complete Clean R0 evaluation and finding classification with a real second independent model environment. Kimi is awaiting external/manual execution and import.
+Next action: Run the separated external Kimi Clean R0 package under `evals/packages/candidate-05-kimi-clean-r0/`, import real evidence, then run the prepared final AgentOS smoke protocol and hosted CI. None of those external/fresh-context steps is complete yet.
 
 Provenance status: the original untracked Candidate 05 R0 files from the Windows working tree have been recovered and imported byte-for-byte under `tests/candidate-05/history/windows-main-164c4d9-untracked/`. They remain `INVALID_TEST / PROMPT_LEAKAGE`; the active diagnostic input is the separate Clean R0.
 

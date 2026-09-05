@@ -30,7 +30,7 @@ Critical unresolved findings: `0 P0`
 
 AgentOS readiness: `NOT_READY`
 
-The repository's structural and frozen-baseline checks pass, and the fresh-Agent handoff smoke test passes. The overall verdict remains `NEEDS_FIX` because required evidence is incomplete: the second independent model run has not occurred, and Candidate 01/02 provenance is missing from Git history. The exact original untracked Candidate 05 R0 bytes have now been imported as immutable historical evidence.
+The repository's structural and frozen-baseline checks pass. The overall verdict remains `NEEDS_FIX` because the external second-model run, hosted CI result, and final post-reconciliation fresh-Agent smoke test are still pending. Candidate 01/02 authoritative artifacts remain unavailable, but the absence is now explicitly recorded without invented rationale or tests. The exact original untracked Candidate 05 R0 bytes have been imported as immutable historical evidence.
 
 No release tag was created.
 
@@ -80,6 +80,14 @@ No release tag was created.
 - Extended `.gitignore` for repository-external private evaluation material and common local artifacts.
 - Did not replace or modify the Apache-2.0 `LICENSE`.
 
+### Phase 2 acceptance and Phase 3A preparation
+
+- Phase 2 recorded `47 PASS / 3 FAIL / 9 PENDING`, with `0 P0`.
+- A final Git-tree and reachable-history search found no authoritative Candidate 01/02 source or test artifacts; `project/history-provenance-gaps.yaml` now records the explicit boundary without reconstructing history.
+- Prepared separated Kimi Executor and Judge packets under `evals/packages/candidate-05-kimi-clean-r0/`; no Kimi output is claimed.
+- Strengthened run/result provenance for model identity, exposed session/context identifiers, fresh-context evidence, Executor/Judge separation, and raw input/output paths.
+- Prepared `audit/final-agentos-smoke-protocol.md`; it is marked `NOT_EXECUTED` and is not final smoke evidence.
+
 ## Candidate 05 Clean R0 status
 
 Run: `c05-r0-clean-20260905-codex-work`
@@ -107,6 +115,8 @@ A fresh Agent with no prior conversation correctly derived from the repository:
 - the missing original R0, exact model IDs, and second-model evidence limitations.
 
 It then produced a compliant Clean R0 execution plan without changing the formal Skill or any file. Smoke-test result: `PASS` for repository discovery and planning in the available Codex Work environment.
+
+That smoke test predates the Candidate 05 provenance reconciliation and final remediation preparation, and it preserves a summary rather than raw session evidence. A final rerun against the intended release commit remains pending under `audit/final-agentos-smoke-protocol.md`; no final smoke result is claimed.
 
 ## Validation results
 
@@ -165,14 +175,17 @@ None.
 
 ### P1
 
-1. **C05-EVAL-001 — Second independent model pending.** Kimi/direct second-model execution is unavailable in this environment. Run the prepared manual Kimi packets and import real outputs and independent judgments.
-2. **HISTORY-PROV-001 — Candidate 01/02 history incomplete.** Formal sources, rationale, deltas, and test records are absent from current Git history. Import authoritative artifacts or explicitly accept the documented provenance gap.
+1. **C05-EVAL-001 — Second independent model pending.** Run the separated Kimi package and import real raw inputs, outputs, provenance, and independently produced judgments.
+2. **CI-OBS-001 — Hosted CI pending.** The current branch has not been pushed and no hosted workflow result exists for the intended final commit.
+3. **AGENTOS-SMOKE-002 — Final smoke pending.** Run the prepared protocol in a demonstrably fresh context against the intended final commit and preserve raw input/output plus context provenance.
 
 ### P2
 
 1. **MODEL-META-001 — Exact Codex Work model IDs not exposed.** The real environment is recorded without inventing identifiers.
-2. **CI-OBS-001 — Hosted CI result unobserved at report creation.** Local CI-equivalent commands pass.
-3. **PRIVACY-001 — Author emails are public in history.** This is disclosed; no rewrite was performed.
+2. **EVAL-PROV-001 — Existing Work session identifiers unavailable.** The run records role separation and fresh contexts, but the platform exposed no session IDs or exports that independently prove those assertions.
+3. **HISTORY-PROV-001 — Candidate 01/02 authoritative history unavailable.** The gap is explicitly recorded in `project/history-provenance-gaps.yaml`; the owner may later provide authoritative evidence.
+4. **SECURITY-SCAN-LIMIT-001 — Secret review is pattern-based.** Full entropy scanning and provider-side credential validation were not performed.
+5. **PRIVACY-001 — Author emails are public in history.** This is disclosed; no rewrite was performed.
 
 ## Frozen-file integrity
 
@@ -184,14 +197,17 @@ None.
 - Candidate 06 created: `NO`.
 - Apache-2.0 license changed: `NO`.
 
-## Git commits created
+## Git provenance before Phase 3A
 
 1. `6f617b0` — `chore: establish frozen baseline and project state`
 2. `9f4b7ce` — `test: clean Candidate 05 diagnostics and formalize candidate lifecycle`
 3. `2885cec` — `docs: sync v0.6 documentation and open-source governance`
 4. `0e645dc` — `feat: add machine-readable evaluation records and repository validation`
 5. `3b7fdf8` — `test: record Candidate 05 clean R0 and AgentOS smoke evidence`
-6. Final report commit — the branch `HEAD` containing this report; resolve with `git rev-parse HEAD` after checkout.
+6. `9478b02` — `docs: record AgentOS readiness standardization outcome`
+7. `e56386f` — `test: preserve original Candidate 05 R0 provenance`
+
+Phase 3A is recorded by the commit containing this report update with message `chore: prepare final acceptance remediation`; its exact hash is reported after commit creation because a commit cannot embed its own stable hash.
 
 ## Release decision
 

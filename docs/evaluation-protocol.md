@@ -19,15 +19,17 @@ An Executor result is invalid when answer-bearing Judge material entered its con
 1. Verify the baseline with `python scripts/verify_baseline.py`.
 2. Create a unique run ID and a directory under `evals/runs/`.
 3. Record `manifest.json` using `evals/schemas/run-manifest.schema.json`.
-4. Start a fresh context for each case where practical.
-5. Supply the frozen Candidate 04 Skill and exactly one Executor case packet.
-6. Preserve the complete response under `raw-output/` without editing.
-7. Have a Judge independent from that execution assess the response.
-8. Record the judgment in a run-local JSONL file and append the same result object to `evals/results.jsonl`.
-9. Keep any human-readable Markdown summary consistent with the JSONL facts.
-10. Classify every non-pass outcome before any rule proposal or Skill edit.
+4. Preserve the exact Executor input packet path and, when possible, the submitted input or an export proving what was supplied.
+5. Start a fresh context for each case where practical and record the session/context identifier when exposed.
+6. Record evidence supporting `fresh_context`; when the platform exposes no identifier or export, record that limitation rather than inventing proof.
+7. Supply the frozen Candidate 04 Skill and exactly one Executor case packet.
+8. Preserve the complete response under `raw-output/` without editing.
+9. Have a Judge independent from that execution assess the response; record the Judge model, session/context identifier when exposed, and the basis for Executor/Judge separation.
+10. Record the judgment in a run-local JSONL file and append the same result object to `evals/results.jsonl`.
+11. Keep any human-readable Markdown summary consistent with the JSONL facts.
+12. Classify every non-pass outcome before any rule proposal or Skill edit.
 
-Two sessions are not independent-model evidence merely because they have different conversation IDs. Record the actual executor model and environment. Never invent a second model run.
+Two sessions are not independent-model evidence merely because they have different conversation IDs. Record the actual Executor and Judge models, environments, and exposed session/context identifiers. If a provider does not expose an exact model or identifier, record `NOT_EXPOSED` with the limitation; never substitute a guessed value. Never invent a second model run.
 
 ## Verdicts
 
@@ -52,7 +54,7 @@ Use `tests/candidate-05/test-cases.md` for Executor packets and `tests/candidate
 - If `C05-DIAG-CONFLICT-01` repeatedly fails across independent models and survives classification as `SKILL_RULE_GAP`, produce a Candidate 05 Rule Gap Proposal.
 - Even after such a proposal, do not modify Candidate 04 during this standardization task.
 
-When Kimi is not callable from the active Work environment, use `tests/candidate-05/manual-kimi-run.md` and leave the second-model requirement unfulfilled until real output is imported.
+When Kimi is not callable from the active Work environment, use the separated package under `evals/packages/candidate-05-kimi-clean-r0/` and leave the second-model requirement unfulfilled until real output and independently produced judgments are imported.
 
 ## Machine-readable records
 
@@ -64,10 +66,15 @@ Every result object records at least:
 - `freeze_commit`
 - `skill_sha256`
 - `executor_model`
+- `executor_session_context_identifier`
+- `fresh_context_evidence`
 - `judge_model`
+- `judge_session_context_identifier`
+- `executor_judge_separation`
 - `fresh_context`
 - `verdict`
 - `failure_class`
+- `raw_input_packet_path`
 - `raw_output_path`
 - `timestamp`
 

@@ -16,6 +16,9 @@ latest_run_result: 5_PASS
 second_model_status: PENDING_EXTERNAL
 executor_cases: tests/candidate-05/test-cases.md
 judge_expectations: tests/candidate-05/expected-behavior.md
+external_kimi_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
+external_kimi_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
+final_agentos_smoke_protocol: audit/final-agentos-smoke-protocol.md
 historical_invalid_test: tests/candidate-05/history/windows-main-164c4d9-untracked/test-cases.md
 historical_invalid_test_verdict: INVALID_TEST
 historical_invalid_test_failure_class: PROMPT_LEAKAGE
