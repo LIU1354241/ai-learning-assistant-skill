@@ -1,0 +1,27 @@
+name: Validate repository
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate project state
+        run: python scripts/validate_repo.py
+      - name: Verify frozen baseline
+        run: python scripts/verify_baseline.py
+      - name: Lint Executor prompts
+        run: python scripts/lint_eval_prompts.py
+      - name: Check whitespace
+        run: git diff --check

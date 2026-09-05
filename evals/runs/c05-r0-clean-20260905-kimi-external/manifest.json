@@ -1,0 +1,29 @@
+{
+  "run_id": "c05-r0-clean-20260905-kimi-external",
+  "candidate": "candidate-05",
+  "baseline": "candidate-04",
+  "freeze_commit": "164c4d99d06841001ede1d06e6335bc105c5c3bc",
+  "skill_sha256": "c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa",
+  "executor_provider": "Kimi",
+  "executor_model": "NOT_EXPOSED",
+  "executor_session_context_identifier": "NOT_EXPOSED",
+  "fresh_context_evidence": "The user created a separate new Kimi conversation for each case.",
+  "judge_provider": "OpenAI",
+  "judge_model": "GPT-5.6 Sol",
+  "judge_session_context_identifier": "NOT_EXPOSED",
+  "executor_judge_separation": "Different provider, different account, and fresh Judge conversation per case.",
+  "environment": "External Kimi web execution; exact model/version and session identifiers were not exposed",
+  "fresh_context": true,
+  "timestamp": "2026-09-05T15:13:56Z",
+  "case_ids": [
+    "REG-C04-EVIDENCE-01",
+    "REG-C04-EVIDENCE-02",
+    "REG-C04-TRANSFER-01",
+    "C05-DIAG-CONFLICT-01",
+    "REG-C04-SCOPE-01"
+  ],
+  "raw_input_packet_path": "evals/runs/c05-r0-clean-20260905-kimi-external/input-evidence/executor-packet.md",
+  "raw_output_directory": "evals/runs/c05-r0-clean-20260905-kimi-external/raw-output",
+  "raw_judge_output_directory": "evals/runs/c05-r0-clean-20260905-kimi-external/judge-output",
+  "notes": "The timestamp records repository import time. Exact Executor and Judge execution timestamps were not recorded. Five Kimi outputs and five formal Judge outputs are preserved verbatim from the supplied evidence document. The exact pre-run Executor packet, Judge packet, expected behavior, and failure taxonomy are retained under input-evidence/."
+}

@@ -1,0 +1,52 @@
+schema_version: 1
+artifact_type: historical_untracked_working_tree_evidence
+
+source_environment:
+  platform: Windows
+  repository: 'E:\ai-learning-assistant-skill'
+  branch: main
+  head: 164c4d99d06841001ede1d06e6335bc105c5c3bc
+  origin_main: 164c4d99d06841001ede1d06e6335bc105c5c3bc
+
+capture_date: 2026-09-05
+tracking_state_at_capture: untracked
+
+classification:
+  test_design_failure: PROMPT_LEAKAGE
+  verdict: INVALID_TEST
+  provenance_gap_cause: TOOL_OR_ENVIRONMENT
+
+provenance_notes:
+  - These files are the actual Windows-local Candidate 05 R0 artifacts.
+  - They were never part of commit 164c4d9.
+  - Commit 164c4d9 identifies the tracked repository checkpoint around which these untracked files existed.
+  - They are retained for provenance and historical analysis only.
+  - They are not valid Clean R0 Executor inputs.
+  - They do not modify Candidate 04 source, behavior, tests, or evidence.
+
+files:
+  - filename: expected-behavior.md
+    bytes: 7344
+    sha256: 15df11ffaec9780d9d9559ca4950b7a288299caf3de68ee5138b3f74f5152f6b
+  - filename: failure-analysis.md
+    bytes: 2250
+    sha256: 1e8d7147bb799a35b9de328c1712d970bc45aadc3566031d713baab44b9aeab3
+  - filename: harness.md
+    bytes: 4739
+    sha256: 50620004c1d584f852f9428e5f5de4af74e4efda64315379b766d18463f11228
+  - filename: results.md
+    bytes: 3032
+    sha256: b1eec5045ee2367badd9945253fc00b0df5c4671f03f3a2b2e0663e4ec09ace8
+  - filename: test-cases.md
+    bytes: 10770
+    sha256: afe2c58c33816e47105aee20c4453170a56eb937bb2583605d2a225c43276d58
+
+related_artifacts:
+  reconstructed_leaky_r0:
+    path: tests/candidate-05/test-cases-r0-leaky.md
+    relationship: reconstruction
+    byte_for_byte_original: false
+  current_clean_r0:
+    path: tests/candidate-05/test-cases.md
+    relationship: clean_executor_input
+    byte_for_byte_original: false

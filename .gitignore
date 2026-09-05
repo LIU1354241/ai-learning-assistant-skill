@@ -1,1 +1,6 @@
 SKILL-share-*.md
+evals-private/
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store

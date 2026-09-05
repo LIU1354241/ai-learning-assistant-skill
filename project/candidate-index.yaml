@@ -1,0 +1,38 @@
+schema_version: 1
+legal_states:
+  - DIAGNOSTIC
+  - PROPOSED
+  - EXPERIMENTAL
+  - VALIDATED
+  - ACCEPTED
+  - FROZEN
+  - SUPERSEDED
+  - REJECTED
+  - CLOSED_NO_CHANGE
+  - BLOCKED
+candidates:
+  - id: candidate-01
+    status: SUPERSEDED
+    was_frozen: true
+    role: HISTORICAL_BASELINE
+  - id: candidate-02
+    status: SUPERSEDED
+    was_frozen: true
+    role: HISTORICAL_BASELINE
+  - id: candidate-03
+    status: SUPERSEDED
+    was_frozen: true
+    role: HISTORICAL_BASELINE
+  - id: candidate-04
+    status: FROZEN
+    was_frozen: true
+    role: CURRENT_BASELINE
+    freeze_commit: 164c4d99d06841001ede1d06e6335bc105c5c3bc
+  - id: candidate-05
+    kind: diagnostic
+    status: DIAGNOSTIC
+    was_frozen: false
+    role: CURRENT_DIAGNOSTIC
+    baseline: candidate-04
+    manifest: tests/candidate-05/manifest.yaml
+

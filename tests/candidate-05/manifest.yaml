@@ -1,0 +1,39 @@
+schema_version: 1
+id: candidate-05
+name: Learner Evidence Conflict
+kind: diagnostic
+status: DIAGNOSTIC
+role: CURRENT_DIAGNOSTIC
+baseline: candidate-04
+hypothesis: >
+  Candidate 04 may not define sufficiently clear behavior when old and new
+  learner capability evidence conflict.
+rule_file_created: false
+baseline_change_allowed: false
+evaluation_status: TWO_EXECUTOR_ENVIRONMENTS_COMPLETE
+latest_run: c05-r0-clean-20260905-kimi-external
+latest_run_result: 3_PASS_2_PARTIAL_MODEL_COMPLIANCE
+second_model_status: COMPLETE
+independent_executor_environment_requirement: SATISFIED
+external_judge_independence: SATISFIED
+skill_rule_gap_count: 0
+executor_cases: tests/candidate-05/test-cases.md
+judge_expectations: tests/candidate-05/expected-behavior.md
+external_kimi_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
+external_kimi_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
+external_kimi_run: evals/runs/c05-r0-clean-20260905-kimi-external
+final_agentos_smoke_protocol: audit/final-agentos-smoke-protocol.md
+historical_invalid_test: tests/candidate-05/history/windows-main-164c4d9-untracked/test-cases.md
+historical_invalid_test_verdict: INVALID_TEST
+historical_invalid_test_failure_class: PROMPT_LEAKAGE
+historical_reconstruction: tests/candidate-05/test-cases-r0-leaky.md
+historical_reconstruction_byte_for_byte_original: false
+original_untracked_source: tests/candidate-05/history/windows-main-164c4d9-untracked/
+original_untracked_source_status: RECOVERED_IMPORTED
+original_untracked_source_provenance: tests/candidate-05/history/windows-main-164c4d9-untracked/provenance.yaml
+old_id_mappings:
+  C05-01: REG-C04-EVIDENCE-01
+  C05-02: REG-C04-EVIDENCE-02
+  C05-03: REG-C04-TRANSFER-01
+  C05-04: C05-DIAG-CONFLICT-01
+  C05-05: REG-C04-SCOPE-01

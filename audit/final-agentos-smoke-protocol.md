@@ -1,0 +1,50 @@
+# Final AgentOS Fresh-Context Smoke Protocol
+
+Status: `COMPLETED_PASS`
+
+The final fresh-Agent smoke completed successfully against `chore/ai-learning-agentos-readiness` at `4a52a333a83ed8ba41195c82eabc2e40b27db797`, with the target working tree reported clean. The authoritative raw evidence and judgment are preserved under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/`.
+
+The raw Agent response truthfully states that final smoke evidence was pending at the moment it inspected the target commit. The response is preserved unedited; completion of that run resolves the pending smoke item.
+
+## Required isolation
+
+- Use a genuinely fresh Agent context that has not read this project conversation or prior smoke output.
+- Give the Agent only the repository at the inspected commit and the exact input below.
+- Do not provide expected answers, `STANDARDIZATION-REPORT.md` conclusions, or prior Agent output outside what the repository itself contains.
+- Do not claim freshness when the platform cannot establish it; record the limitation.
+- The Agent must not modify the repository.
+
+## Prepared protocol input
+
+```text
+Inspect this repository without modifying any file. Based only on repository evidence, report:
+
+1. the current formal behavioral baseline, lifecycle status, and project role;
+2. the canonical runtime Skill, frozen source, freeze provenance commit, and SHA-256;
+3. the current diagnostic and whether it is accepted or baseline behavior;
+4. the next required action;
+5. the frozen scope and forbidden mutations;
+6. the exact repository validation commands;
+7. the status of Candidate 05 Clean R0, including how many independent execution environments are actually complete;
+8. the relationship between the original Windows R0, the reconstructed leaky note, and the active Clean R0;
+9. all current release blockers and evidence limitations.
+
+Then create a Candidate 05 Clean R0 execution plan without modifying the formal Skill or repository. Do not claim that any planned execution occurred.
+```
+
+## Evidence to preserve
+
+The completed run is stored under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/` with:
+
+- `input.md`: the exact raw Agent input actually supplied, preserved independently of the preparation block above;
+- `output.md`: the complete unedited first Agent response;
+- `metadata.yaml`: timestamp, inspected full commit hash, Agent provider/model, session/context identifier when exposed, freshness evidence, environment, and operator;
+- any export or screenshot reference used to support fresh-context provenance.
+
+The metadata must record `NOT_EXPOSED` plus an explanation when a provider does not expose an exact model or session identifier. It must never invent an identifier.
+
+## Acceptance checks
+
+The result passes only if the Agent derives the repository facts correctly, distinguishes all three Candidate 05 artifact roles, identifies the real remaining blockers, supplies the exact four validation commands, keeps Candidate 04 untouched, and does not claim unperformed work.
+
+Afterward, independently compare the raw output with current repository state and record the verdict without editing the raw response.
