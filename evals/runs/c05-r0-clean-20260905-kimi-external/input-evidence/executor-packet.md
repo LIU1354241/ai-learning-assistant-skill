@@ -1,8 +1,8 @@
 # Candidate 05 Kimi Clean R0 — Executor Packet
 
-Status: `EXECUTED_AND_IMPORTED`
+Status: `READY_FOR_EXTERNAL_EXECUTION`
 
-This packet is retained as the Clean R0 input source for run `c05-r0-clean-20260905-kimi-external`. The imported evidence records one new Kimi conversation per case. The Executor must not receive `judge-packet.md`, `tests/candidate-05/expected-behavior.md`, expected verdicts, forbidden-behavior lists, prior outputs, or prior judgments.
+This packet has not been executed. Use one new Kimi conversation for each case. The Executor must not receive `judge-packet.md`, `tests/candidate-05/expected-behavior.md`, expected verdicts, forbidden-behavior lists, prior outputs, or prior judgments.
 
 ## Baseline and capture requirements
 

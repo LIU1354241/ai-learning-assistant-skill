@@ -26,10 +26,10 @@ Candidate 05 is not:
 - validated;
 - baseline behavior.
 
-Evaluation status: one Codex Work environment completed 5/5 clean cases with an independent Judge; all five were `PASS`. Exact model identifiers were not exposed.
+Evaluation status: two independent Executor environments have completed Clean R0. Codex Work recorded 5/5 `PASS`; external Kimi recorded 3 `PASS` and 2 `PARTIAL / MODEL_COMPLIANCE`. Exact Kimi model/version and session identifiers were not exposed. The Kimi run used an OpenAI / GPT-5.6 Sol Judge from a different provider and account, with a fresh Judge conversation per case.
 
-Next action: Run the separated external Kimi Clean R0 package under `evals/packages/candidate-05-kimi-clean-r0/`, import real evidence, then run the prepared final AgentOS smoke protocol and hosted CI. None of those external/fresh-context steps is complete yet.
+Next action: Run the prepared final AgentOS smoke protocol against the intended final commit and obtain a passing hosted CI result. The external Kimi evidence has been imported; no `SKILL_RULE_GAP` was found.
 
 Provenance status: the original untracked Candidate 05 R0 files from the Windows working tree have been recovered and imported byte-for-byte under `tests/candidate-05/history/windows-main-164c4d9-untracked/`. They remain `INVALID_TEST / PROMPT_LEAKAGE`; the active diagnostic input is the separate Clean R0.
 
-No Candidate 05 rule file exists. Candidate 04 behavior remains frozen.
+Candidate 05 remains `DIAGNOSTIC`: the external partial results are classified as `MODEL_COMPLIANCE`, not a rule gap. No Candidate 05 rule file exists. Candidate 04 behavior remains frozen.

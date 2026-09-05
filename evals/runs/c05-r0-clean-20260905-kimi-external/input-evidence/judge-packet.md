@@ -2,9 +2,7 @@
 
 Visibility: `JUDGE_ONLY`
 
-Status: `EXECUTED_AND_IMPORTED`
-
-Formal Judge evidence associated with this packet is preserved under `evals/runs/c05-r0-clean-20260905-kimi-external/judge-output/`. This packet remains Judge-only evidence and must not be supplied to an Executor.
+Status: `READY_FOR_EXTERNAL_JUDGMENT`
 
 Never provide this packet or `tests/candidate-05/expected-behavior.md` to the Executor. Do not begin judgment until the Executor contexts are closed and their complete raw outputs and provenance records are preserved.
 

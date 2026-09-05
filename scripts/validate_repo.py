@@ -228,6 +228,19 @@ def main() -> int:
             elif not (ROOT / raw_path).is_file():
                 print(f"FAIL: evals/results.jsonl:{number}: raw output is missing")
                 jsonl_ok = False
+            for provider_field in ("executor_provider", "judge_provider"):
+                provider = record.get(provider_field)
+                if provider is not None and (not isinstance(provider, str) or not provider):
+                    print(f"FAIL: evals/results.jsonl:{number}: {provider_field} must be a non-empty string")
+                    jsonl_ok = False
+            raw_judge_path = record.get("raw_judge_output_path")
+            if raw_judge_path is not None:
+                if not isinstance(raw_judge_path, str) or Path(raw_judge_path).is_absolute() or ".." in Path(raw_judge_path).parts:
+                    print(f"FAIL: evals/results.jsonl:{number}: unsafe raw_judge_output_path")
+                    jsonl_ok = False
+                elif not (ROOT / raw_judge_path).is_file():
+                    print(f"FAIL: evals/results.jsonl:{number}: raw Judge output is missing")
+                    jsonl_ok = False
             global_results.append(record)
     check(jsonl_ok, "evaluation JSONL parses and contains required fields")
 
@@ -276,6 +289,16 @@ def main() -> int:
         if not isinstance(raw_input, str) or Path(raw_input).is_absolute() or ".." in Path(raw_input).parts or not (ROOT / raw_input).is_file():
             print(f"FAIL: {manifest_path.relative_to(ROOT)}: invalid raw_input_packet_path")
             run_records_ok = False
+        for provider_field in ("executor_provider", "judge_provider"):
+            provider = run_manifest.get(provider_field)
+            if provider is not None and (not isinstance(provider, str) or not provider):
+                print(f"FAIL: {manifest_path.relative_to(ROOT)}: {provider_field} must be a non-empty string")
+                run_records_ok = False
+        raw_judge_directory = run_manifest.get("raw_judge_output_directory")
+        if raw_judge_directory is not None:
+            if not isinstance(raw_judge_directory, str) or Path(raw_judge_directory).is_absolute() or not (ROOT / raw_judge_directory).is_dir():
+                print(f"FAIL: {manifest_path.relative_to(ROOT)}: invalid raw_judge_output_directory")
+                run_records_ok = False
         judgments_path = manifest_path.parent / "judgments.jsonl"
         if judgments_path.is_file():
             for number, line in enumerate(judgments_path.read_text(encoding="utf-8").splitlines(), start=1):

@@ -16,15 +16,19 @@ current_diagnostic:
   status: DIAGNOSTIC
   role: CURRENT_DIAGNOSTIC
   baseline_change_allowed: false
-  evaluation_status: ONE_ENVIRONMENT_COMPLETE
-  latest_run: c05-r0-clean-20260905-codex-work
-  latest_run_result: 5_PASS
-  second_model_status: PENDING_EXTERNAL
+  evaluation_status: TWO_EXECUTOR_ENVIRONMENTS_COMPLETE
+  latest_run: c05-r0-clean-20260905-kimi-external
+  latest_run_result: 3_PASS_2_PARTIAL_MODEL_COMPLIANCE
+  second_model_status: COMPLETE
+  independent_executor_environment_requirement: SATISFIED
+  external_judge_independence: SATISFIED
+  skill_rule_gap_count: 0
   external_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
   external_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
+  external_run: evals/runs/c05-r0-clean-20260905-kimi-external
 final_agentos_smoke:
   status: PENDING
   protocol: audit/final-agentos-smoke-protocol.md
 hosted_ci_status: PENDING
-next_action: Run the external Kimi package, import real evidence, then run final fresh-Agent smoke and hosted CI.
+next_action: Run final fresh-Agent smoke against the intended final commit and obtain a passing hosted CI result.
 private_holdout_location: repository-external AgentOS Verifier storage

@@ -24,7 +24,7 @@ An Executor result is invalid when answer-bearing Judge material entered its con
 6. Record evidence supporting `fresh_context`; when the platform exposes no identifier or export, record that limitation rather than inventing proof.
 7. Supply the frozen Candidate 04 Skill and exactly one Executor case packet.
 8. Preserve the complete response under `raw-output/` without editing.
-9. Have a Judge independent from that execution assess the response; record the Judge model, session/context identifier when exposed, and the basis for Executor/Judge separation.
+9. Have a Judge independent from that execution assess the response; preserve the complete Judge output without editing, and record the Judge provider/model, session/context identifier when exposed, and the basis for Executor/Judge separation.
 10. Record the judgment in a run-local JSONL file and append the same result object to `evals/results.jsonl`.
 11. Keep any human-readable Markdown summary consistent with the JSONL facts.
 12. Classify every non-pass outcome before any rule proposal or Skill edit.
@@ -65,9 +65,11 @@ Every result object records at least:
 - `baseline`
 - `freeze_commit`
 - `skill_sha256`
+- `executor_provider` when recorded by the run format
 - `executor_model`
 - `executor_session_context_identifier`
 - `fresh_context_evidence`
+- `judge_provider` when recorded by the run format
 - `judge_model`
 - `judge_session_context_identifier`
 - `executor_judge_separation`
@@ -76,10 +78,11 @@ Every result object records at least:
 - `failure_class`
 - `raw_input_packet_path`
 - `raw_output_path`
+- `raw_judge_output_path` when a separate formal Judge artifact is preserved
 - `timestamp`
 
 `evals/results.jsonl` contains one complete JSON object per nonblank line. Do not add comments, placeholders, or predicted outcomes. An empty file means no standardized result has been recorded.
 
 ## Raw-output integrity
 
-Raw outputs are append-only evidence. Corrections belong in judgments or findings, never inside the raw output. If an import is incomplete, mark the run `BLOCKED` rather than reconstructing missing model text.
+Executor and formal Judge raw outputs are append-only evidence. Corrections and normalization belong in machine-readable judgments or findings, never inside the raw artifacts. For PASS results, raw Judge spellings such as `N/A` or `NONE` remain untouched while `failure_class` is normalized to JSON `null`. If an import is incomplete, mark the run `BLOCKED` rather than reconstructing missing model text.
