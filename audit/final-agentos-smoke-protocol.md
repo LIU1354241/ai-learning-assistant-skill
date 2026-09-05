@@ -1,8 +1,10 @@
 # Final AgentOS Fresh-Context Smoke Protocol
 
-Status: `NOT_EXECUTED`
+Status: `COMPLETED_PASS`
 
-This protocol must be run against the intended final release commit after repository-local remediation and external evaluation evidence are complete. This file is preparation only and is not smoke-test evidence.
+The final fresh-Agent smoke completed successfully against `chore/ai-learning-agentos-readiness` at `4a52a333a83ed8ba41195c82eabc2e40b27db797`, with the target working tree reported clean. The authoritative raw evidence and judgment are preserved under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/`.
+
+The raw Agent response truthfully states that final smoke evidence was pending at the moment it inspected the target commit. The response is preserved unedited; completion of that run resolves the pending smoke item.
 
 ## Required isolation
 
@@ -12,7 +14,7 @@ This protocol must be run against the intended final release commit after reposi
 - Do not claim freshness when the platform cannot establish it; record the limitation.
 - The Agent must not modify the repository.
 
-## Exact raw Agent input
+## Prepared protocol input
 
 ```text
 Inspect this repository without modifying any file. Based only on repository evidence, report:
@@ -32,9 +34,9 @@ Then create a Candidate 05 Clean R0 execution plan without modifying the formal 
 
 ## Evidence to preserve
 
-Store a completed run under `audit/agentos-smoke/<run-id>/` with:
+The completed run is stored under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/` with:
 
-- `input.md`: the exact raw Agent input above;
+- `input.md`: the exact raw Agent input actually supplied, preserved independently of the preparation block above;
 - `output.md`: the complete unedited first Agent response;
 - `metadata.yaml`: timestamp, inspected full commit hash, Agent provider/model, session/context identifier when exposed, freshness evidence, environment, and operator;
 - any export or screenshot reference used to support fresh-context provenance.

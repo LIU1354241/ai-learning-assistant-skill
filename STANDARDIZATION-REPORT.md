@@ -30,7 +30,7 @@ Critical unresolved findings: `0 P0`
 
 AgentOS readiness: `NOT_READY`
 
-The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence has now been imported, satisfying the two-Executor-environment requirement. The overall verdict remains `NEEDS_FIX` because a hosted CI result and the final post-reconciliation fresh-Agent smoke test are still pending. Candidate 01/02 authoritative artifacts remain unavailable, but the absence is explicitly recorded without invented rationale or tests. The exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence.
+The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence satisfies the two-Executor-environment requirement, and the final post-reconciliation fresh-Agent smoke test now has a preserved `PASS` result. The overall verdict remains `NEEDS_FIX` because a hosted CI result is still pending. Candidate 01/02 authoritative artifacts remain unavailable, but the absence is explicitly recorded without invented rationale or tests. The exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence.
 
 No release tag was created.
 
@@ -98,6 +98,14 @@ No release tag was created.
 - Recorded that the Kimi Judge used a different provider, different account, and fresh Judge conversation per case.
 - Kept Candidate 05 `DIAGNOSTIC`; no rule proposal was created because no `SKILL_RULE_GAP` exists.
 
+### Phase 3C final AgentOS smoke evidence
+
+- Preserved the complete raw Agent input and first complete raw Agent output under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/`.
+- Recorded a `PASS` against branch `chore/ai-learning-agentos-readiness` at `4a52a333a83ed8ba41195c82eabc2e40b27db797`, with the target working tree reported clean.
+- Recorded unavailable Agent provider/model and session/context identifiers as `NOT_EXPOSED`, and the unavailable execution timestamp as `NOT_RECORDED`.
+- Kept the raw output unedited: its statement that final smoke evidence was pending describes the repository state before this evidence import and is not a smoke failure.
+- Did not import the earlier blocked attempt because no complete verbatim input/output evidence pair was supplied.
+
 ## Candidate 05 Clean R0 status
 
 Runs:
@@ -122,7 +130,9 @@ A fresh Agent with no prior conversation correctly derived from the repository:
 
 It then produced a compliant Clean R0 execution plan without changing the formal Skill or any file. Smoke-test result: `PASS` for repository discovery and planning in the available Codex Work environment.
 
-That smoke test predates the Candidate 05 provenance reconciliation and final remediation preparation, and it preserves a summary rather than raw session evidence. A final rerun against the intended release commit remains pending under `audit/final-agentos-smoke-protocol.md`; no final smoke result is claimed.
+That earlier smoke test predates the Candidate 05 provenance reconciliation and final remediation preparation, and it preserves a summary rather than raw session evidence.
+
+The final fresh-Agent smoke was subsequently completed against `chore/ai-learning-agentos-readiness` at `4a52a333a83ed8ba41195c82eabc2e40b27db797`. Its complete raw input and first complete raw output are preserved under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/`, and the acceptance judgment is `PASS`. Agent provider/model and session/context identifiers were `NOT_EXPOSED`; the execution timestamp was `NOT_RECORDED`. The raw output's statement that final smoke evidence was pending remains intact because it was true at the inspected commit before import.
 
 ## Validation results
 
@@ -182,7 +192,6 @@ None.
 ### P1
 
 1. **CI-OBS-001 — Hosted CI pending.** The current branch has not been pushed and no hosted workflow result exists for the intended final commit.
-2. **AGENTOS-SMOKE-002 — Final smoke pending.** Run the prepared protocol in a demonstrably fresh context against the intended final commit and preserve raw input/output plus context provenance.
 
 ### P2
 
@@ -202,7 +211,7 @@ None.
 - Candidate 06 created: `NO`.
 - Apache-2.0 license changed: `NO`.
 
-## Git provenance before Phase 3A
+## Git provenance before Phase 3C
 
 1. `6f617b0` — `chore: establish frozen baseline and project state`
 2. `9f4b7ce` — `test: clean Candidate 05 diagnostics and formalize candidate lifecycle`
@@ -212,9 +221,10 @@ None.
 6. `9478b02` — `docs: record AgentOS readiness standardization outcome`
 7. `e56386f` — `test: preserve original Candidate 05 R0 provenance`
 8. `f4e1be9` — `chore: prepare final acceptance remediation`
+9. `4a52a33` — `test: import external Kimi Candidate 05 Clean R0 evidence`
 
-Phase 3B is recorded by the commit containing this report update with message `test: import external Kimi Candidate 05 Clean R0 evidence`; its exact hash is reported after commit creation because a commit cannot embed its own stable hash.
+Phase 3C is recorded by the commit containing this report update with message `test: record final AgentOS handoff smoke evidence`; its exact hash is reported after commit creation because a commit cannot embed its own stable hash.
 
 ## Release decision
 
-Do not create `v0.6.0-agent-ready` yet. The intended release commit is not accepted while hosted CI and final fresh-Agent smoke evidence remain pending. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.
+Do not create `v0.6.0-agent-ready` yet. The final fresh-Agent smoke evidence is complete and passing, but the intended release commit is not accepted while hosted CI remains pending. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.

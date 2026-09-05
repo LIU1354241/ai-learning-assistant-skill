@@ -1,0 +1,34 @@
+schema_version: 1
+run_id: agentos-handoff-final-20260905-4a52a33
+artifact_type: final_agentos_handoff_smoke_evidence
+verdict: PASS
+target_branch: chore/ai-learning-agentos-readiness
+target_head: 4a52a333a83ed8ba41195c82eabc2e40b27db797
+target_working_tree_clean: true
+fresh_context: true
+fresh_context_evidence: >-
+  The user reports that the Agent was instructed not to use or assume prior
+  conversation history and to treat the repository as the only authoritative
+  project context.
+agent_provider: NOT_EXPOSED
+agent_model: NOT_EXPOSED
+session_context_identifier: NOT_EXPOSED
+execution_timestamp: NOT_RECORDED
+evidence_import_timestamp: 2026-09-05T16:10:52Z
+environment: NOT_EXPOSED
+operator: user
+raw_input_path: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/input.md
+raw_input_bytes: 2052
+raw_input_sha256: 56446a9986b354ffad57c1117c36d9651da16e3bba11f283721e72ac21b586b1
+raw_output_path: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/output.md
+raw_output_bytes: 6491
+raw_output_sha256: 1fbf893a4570c85e562a9d4456dae02fae8d51ac5c569baf02db67938a5c6300
+prior_blocked_attempt:
+  preserved: false
+  reason: Complete verbatim input and output evidence was not supplied.
+interpretation: >-
+  The raw output's statement that final smoke evidence was pending accurately
+  reflects the repository state at the inspected target commit and is not a
+  smoke failure. This completed run resolves that pending acceptance item.
+remaining_release_blocker:
+  hosted_ci: PENDING

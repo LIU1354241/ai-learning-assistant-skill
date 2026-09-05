@@ -28,7 +28,9 @@ Candidate 05 is not:
 
 Evaluation status: two independent Executor environments have completed Clean R0. Codex Work recorded 5/5 `PASS`; external Kimi recorded 3 `PASS` and 2 `PARTIAL / MODEL_COMPLIANCE`. Exact Kimi model/version and session identifiers were not exposed. The Kimi run used an OpenAI / GPT-5.6 Sol Judge from a different provider and account, with a fresh Judge conversation per case.
 
-Next action: Run the prepared final AgentOS smoke protocol against the intended final commit and obtain a passing hosted CI result. The external Kimi evidence has been imported; no `SKILL_RULE_GAP` was found.
+Final fresh-Agent AgentOS smoke: `PASS` against `chore/ai-learning-agentos-readiness` at `4a52a333a83ed8ba41195c82eabc2e40b27db797`, with the target working tree reported clean. The complete raw input and first complete raw output are preserved under `audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/`.
+
+Next action: Push the standardization branch and obtain a passing hosted CI result, then perform final release acceptance. No `SKILL_RULE_GAP` was found.
 
 Provenance status: the original untracked Candidate 05 R0 files from the Windows working tree have been recovered and imported byte-for-byte under `tests/candidate-05/history/windows-main-164c4d9-untracked/`. They remain `INVALID_TEST / PROMPT_LEAKAGE`; the active diagnostic input is the separate Clean R0.
 

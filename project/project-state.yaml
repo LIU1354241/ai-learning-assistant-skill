@@ -27,8 +27,19 @@ current_diagnostic:
   external_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
   external_run: evals/runs/c05-r0-clean-20260905-kimi-external
 final_agentos_smoke:
-  status: PENDING
+  status: PASS
   protocol: audit/final-agentos-smoke-protocol.md
+  run: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33
+  target_branch: chore/ai-learning-agentos-readiness
+  target_head: 4a52a333a83ed8ba41195c82eabc2e40b27db797
+  target_working_tree_clean: true
+  verdict: PASS
+  agent_provider: NOT_EXPOSED
+  agent_model: NOT_EXPOSED
+  session_context_identifier: NOT_EXPOSED
+  execution_timestamp: NOT_RECORDED
+  raw_input: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/input.md
+  raw_output: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/output.md
 hosted_ci_status: PENDING
-next_action: Run final fresh-Agent smoke against the intended final commit and obtain a passing hosted CI result.
+next_action: Push the standardization branch and obtain a passing hosted CI result, then perform final release acceptance.
 private_holdout_location: repository-external AgentOS Verifier storage

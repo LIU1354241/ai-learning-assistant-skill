@@ -62,6 +62,10 @@ REQUIRED = (
     "evals/packages/candidate-05-kimi-clean-r0/executor-packet.md",
     "evals/packages/candidate-05-kimi-clean-r0/judge-packet.md",
     "audit/final-agentos-smoke-protocol.md",
+    "audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/input.md",
+    "audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/output.md",
+    "audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/metadata.yaml",
+    "audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/judgment.md",
     "evals/schemas/run-manifest.schema.json",
     "evals/schemas/result.schema.json",
     "evals/results.jsonl",
@@ -317,6 +321,7 @@ def main() -> int:
     project_text = (ROOT / "project/project-state.yaml").read_text(encoding="utf-8")
     project_baseline = section(project_text, "baseline")
     project_diagnostic = section(project_text, "current_diagnostic")
+    project_smoke = section(project_text, "final_agentos_smoke")
     status_text = (ROOT / "STATUS.md").read_text(encoding="utf-8")
     check(field(project_baseline, "id") == baseline.get("baseline") == "candidate-04", "baseline IDs are consistent")
     check(field(project_baseline, "status") == baseline.get("status") == "FROZEN", "baseline statuses are consistent")
@@ -324,6 +329,32 @@ def main() -> int:
     check(field(project_diagnostic, "id") == "candidate-05", "project state identifies Candidate 05 diagnostic")
     check("Baseline: Candidate 04" in status_text and "Baseline status: FROZEN" in status_text, "STATUS baseline is consistent")
     check("Candidate 05 status: DIAGNOSTIC" in status_text, "STATUS diagnostic is consistent")
+
+    smoke_directory = ROOT / "audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33"
+    smoke_metadata = (smoke_directory / "metadata.yaml").read_text(encoding="utf-8")
+    smoke_input = smoke_directory / "input.md"
+    smoke_output = smoke_directory / "output.md"
+    check(
+        field(project_smoke, "status") == field(project_smoke, "verdict") == "PASS"
+        and "Final fresh-Agent AgentOS smoke: `PASS`" in status_text,
+        "final AgentOS smoke status is consistent",
+    )
+    check(
+        field(smoke_metadata, "verdict") == "PASS"
+        and field(smoke_metadata, "target_branch") == "chore/ai-learning-agentos-readiness"
+        and field(smoke_metadata, "target_head") == "4a52a333a83ed8ba41195c82eabc2e40b27db797"
+        and field(smoke_metadata, "target_working_tree_clean") == "true",
+        "final AgentOS smoke target and verdict are recorded",
+    )
+    smoke_hashes_ok = smoke_input.is_file() and smoke_output.is_file()
+    if smoke_hashes_ok:
+        smoke_hashes_ok = (
+            len(smoke_input.read_bytes()) == int(field(smoke_metadata, "raw_input_bytes") or -1)
+            and hashlib.sha256(smoke_input.read_bytes()).hexdigest() == field(smoke_metadata, "raw_input_sha256")
+            and len(smoke_output.read_bytes()) == int(field(smoke_metadata, "raw_output_bytes") or -1)
+            and hashlib.sha256(smoke_output.read_bytes()).hexdigest() == field(smoke_metadata, "raw_output_sha256")
+        )
+    check(smoke_hashes_ok, "final AgentOS smoke raw evidence matches recorded size and SHA-256")
 
     canonical_path = ROOT / str(baseline.get("canonical_skill", ""))
     source_path = ROOT / str(baseline.get("frozen_source", ""))
