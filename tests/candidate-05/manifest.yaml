@@ -10,9 +10,9 @@ hypothesis: >
   learner capability evidence conflict.
 rule_file_created: false
 baseline_change_allowed: false
-evaluation_status: TWO_EXECUTOR_ENVIRONMENTS_COMPLETE
-latest_run: c05-r0-clean-20260905-kimi-external
-latest_run_result: 3_PASS_2_PARTIAL_MODEL_COMPLIANCE
+evaluation_status: THREE_EXECUTOR_ENVIRONMENTS_COMPLETE
+latest_run: c05-r1-clean-20260906-claude-haiku45-duckai
+latest_run_result: 5_PASS
 second_model_status: COMPLETE
 independent_executor_environment_requirement: SATISFIED
 external_judge_independence: SATISFIED
@@ -22,6 +22,9 @@ judge_expectations: tests/candidate-05/expected-behavior.md
 external_kimi_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
 external_kimi_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
 external_kimi_run: evals/runs/c05-r0-clean-20260905-kimi-external
+external_claude_run: evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai
+external_claude_executor_model: Claude Haiku 4.5
+external_claude_judge_model: GPT-5.6 Sol
 final_agentos_smoke_protocol: audit/final-agentos-smoke-protocol.md
 historical_invalid_test: tests/candidate-05/history/windows-main-164c4d9-untracked/test-cases.md
 historical_invalid_test_verdict: INVALID_TEST

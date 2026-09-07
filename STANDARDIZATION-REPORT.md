@@ -108,16 +108,26 @@ No release tag was created.
 - Kept the raw output unedited: its statement that final smoke evidence was pending describes the repository state before this evidence import and is not a smoke failure.
 - Did not import the earlier blocked attempt because no complete verbatim input/output evidence pair was supplied.
 
-## Candidate 05 Clean R0 status
+### Phase 3D Claude Haiku 4.5 Clean R1 evidence
+
+- Imported five exact submitted inputs, five verbatim Anthropic Claude Haiku 4.5 Executor outputs, five exact Judge inputs, and five verbatim OpenAI / GPT-5.6 Sol Judge outputs under `evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai/`.
+- Recorded 5 `PASS`, 0 `PARTIAL`, 0 `FAIL`, and 0 `SKILL_RULE_GAP` in run-local and global JSONL.
+- Used authoritative Attempt 02 for `REG-C04-EVIDENCE-02`; the incomplete Attempt 01 and all authority-map exclusions were not imported as result evidence.
+- Preserved the Cases 3–5 Judge schema-only format deviations verbatim and recorded them as non-verdict observations.
+- Recorded unavailable Executor/Judge timestamps and context identifiers as `NOT_RECORDED` and `NOT_EXPOSED`; no value was invented.
+- Kept Candidate 05 `DIAGNOSTIC` because the valid Kimi `PARTIAL / MODEL_COMPLIANCE` results remain part of the evidence set.
+
+## Candidate 05 evaluation status
 
 Runs:
 
 - `c05-r0-clean-20260905-codex-work`: 5/5 `PASS` in one Codex Work Executor environment; exact model/session identifiers were not exposed.
 - `c05-r0-clean-20260905-kimi-external`: 3 `PASS`, 2 `PARTIAL / MODEL_COMPLIANCE`, 0 `FAIL`, and 0 `SKILL_RULE_GAP`; exact Kimi model/version and session identifiers were not exposed.
+- `c05-r1-clean-20260906-claude-haiku45-duckai`: 5/5 `PASS` with Anthropic Claude Haiku 4.5 through Duck.ai; exact session/context identifiers were not exposed.
 
-The two-Executor-environment requirement is satisfied. This is separate from Judge independence: the external Kimi run was judged by OpenAI / GPT-5.6 Sol using a different provider, different account, and fresh Judge conversation per case, although the exact Judge session identifiers were not exposed.
+Three independent Executor environments are recorded. This is separate from Judge independence: the external Kimi and Claude runs were judged by OpenAI / GPT-5.6 Sol using different provider/model environments and fresh Judge conversations per case, although the exact Judge session identifiers were not exposed.
 
-Candidate 05 remains `DIAGNOSTIC`. `CLOSED_NO_CHANGE` is not established because both independent runs did not fully pass. `PROPOSED` is not permitted because no verified `SKILL_RULE_GAP` exists. No Candidate 05 proposal or rule file was created.
+Candidate 05 remains `DIAGNOSTIC`. `CLOSED_NO_CHANGE` is not established because not all real independent runs passed: the valid Kimi run retains two `PARTIAL / MODEL_COMPLIANCE` outcomes. `PROPOSED` is not permitted because no verified `SKILL_RULE_GAP` exists. No Candidate 05 proposal or rule file was created.
 
 ## AgentOS smoke test
 
@@ -235,4 +245,4 @@ Phase 3C is recorded by the commit containing this report update with message `t
 
 ## Release decision
 
-The final fresh-Agent smoke evidence and Hosted CI acceptance evidence are complete and passing, with no unresolved release blockers. The repository is eligible for the owner's next release decision. Review, merge, or create a release tag only if explicitly authorized. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.
+The final fresh-Agent smoke evidence and Hosted CI acceptance evidence are complete and passing, with no unresolved release blockers. The uncommitted Candidate 05 Claude Clean R1 evidence import is ready for owner review; commit, push, merge, or tag only if explicitly authorized. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.

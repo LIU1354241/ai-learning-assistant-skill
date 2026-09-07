@@ -1,0 +1,93 @@
+run_id: c05-r1-clean-20260906-claude-haiku45-duckai
+
+cases:
+  REG-C04-EVIDENCE-01:
+    submitted_input:
+      path: 01-REG-C04-EVIDENCE-01/submitted-input.txt
+    executor_output:
+      path: 01-REG-C04-EVIDENCE-01/executor-output.txt
+    judge_input:
+      path: 01-REG-C04-EVIDENCE-01/judge-input.txt
+    judge_output:
+      path: 01-REG-C04-EVIDENCE-01/judge-output.txt
+    metadata:
+      path: 01-REG-C04-EVIDENCE-01/metadata.yaml
+    verdict: PASS
+    failure_class: null
+
+  REG-C04-EVIDENCE-02:
+    submitted_input:
+      path: 02-REG-C04-EVIDENCE-02/attempt-02/submitted-input.txt
+    executor_output:
+      path: 02-REG-C04-EVIDENCE-02/attempt-02/executor-output.txt
+    judge_input:
+      path: 02-REG-C04-EVIDENCE-02/judge-input.txt
+    judge_output:
+      path: 02-REG-C04-EVIDENCE-02/judge-output.txt
+    executor_metadata:
+      path: 02-REG-C04-EVIDENCE-02/attempt-02/metadata.yaml
+    judge_metadata:
+      path: 02-REG-C04-EVIDENCE-02/metadata.yaml
+    verdict: PASS
+    failure_class: null
+
+  REG-C04-TRANSFER-01:
+    submitted_input:
+      path: 03-REG-C04-TRANSFER-01/submitted-input.txt
+    executor_output:
+      path: 03-REG-C04-TRANSFER-01/executor-output.txt
+    judge_input:
+      path: 03-REG-C04-TRANSFER-01/judge-input.txt
+    judge_output:
+      path: 03-REG-C04-TRANSFER-01/judge-output.txt
+    metadata:
+      path: 03-REG-C04-TRANSFER-01/metadata.yaml
+    verdict: PASS
+    failure_class: null
+    judge_schema_only_compliance: FAIL
+
+  C05-DIAG-CONFLICT-01:
+    submitted_input:
+      path: 04-C05-DIAG-CONFLICT-01/submitted-input.txt
+    executor_output:
+      path: 04-C05-DIAG-CONFLICT-01/executor-output.txt
+    judge_input:
+      path: 04-C05-DIAG-CONFLICT-01/judge-input.txt
+    judge_output:
+      path: 04-C05-DIAG-CONFLICT-01/judge-output.txt
+    metadata:
+      path: 04-C05-DIAG-CONFLICT-01/metadata.yaml
+    verdict: PASS
+    failure_class: null
+    judge_schema_only_compliance: FAIL
+
+  REG-C04-SCOPE-01:
+    submitted_input:
+      path: 05-REG-C04-SCOPE-01/submitted-input.txt
+    executor_output:
+      path: 05-REG-C04-SCOPE-01/executor-output.txt
+    judge_input:
+      path: 05-REG-C04-SCOPE-01/judge-input.txt
+    judge_output:
+      path: 05-REG-C04-SCOPE-01/judge-output.txt
+    metadata:
+      path: 05-REG-C04-SCOPE-01/metadata.yaml
+    verdict: PASS
+    failure_class: null
+    judge_schema_only_compliance: FAIL
+
+excluded_from_authoritative_import:
+  - path: 02-REG-C04-EVIDENCE-02/attempt-01-incomplete/
+    reason: INCOMPLETE_CAPTURE
+  - path: 02-REG-C04-EVIDENCE-02/executor-output.txt
+    reason: STALE_NON_AUTHORITATIVE_EXECUTOR_OUTPUT
+  - path: 02-REG-C04-EVIDENCE-02/submitted-input.txt
+    reason: NON_AUTHORITATIVE_TOP_LEVEL_SUBMITTED_INPUT
+  - path: 02-REG-C04-EVIDENCE-02/attempt-02/exector-output.txt
+    reason: TYPO_NAMED_DUPLICATE_EXECUTOR_OUTPUT
+  - path: 02-REG-C04-EVIDENCE-02/.DS_Store
+    reason: UNRELATED_SYSTEM_FILE
+  - path: 02-REG-C04-EVIDENCE-02/未命名文件夹/
+    reason: UNRELATED_ARTIFACT_DIRECTORY
+  - path: 02-REG-C04-EVIDENCE-02/未命名文件夹/Liu-AgentOS-v0.1-Kimi-Independent-Foundation-Review.md
+    reason: UNRELATED_REVIEW_FILE

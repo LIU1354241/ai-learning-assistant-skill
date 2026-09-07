@@ -1,0 +1,29 @@
+{
+  "run_id": "c05-r1-clean-20260906-claude-haiku45-duckai",
+  "candidate": "candidate-05",
+  "baseline": "candidate-04",
+  "freeze_commit": "164c4d99d06841001ede1d06e6335bc105c5c3bc",
+  "skill_sha256": "c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa",
+  "executor_provider": "Anthropic",
+  "executor_model": "Claude Haiku 4.5",
+  "executor_session_context_identifier": "NOT_EXPOSED",
+  "fresh_context_evidence": "Per-case metadata records fresh_context true. The capture procedure records a separate new Duck.ai conversation for each Executor case and a separate new ChatGPT conversation for each Judge; platform context identifiers were not exposed.",
+  "judge_provider": "OpenAI",
+  "judge_model": "GPT-5.6 Sol",
+  "judge_session_context_identifier": "NOT_EXPOSED",
+  "executor_judge_separation": "Executor responses were produced with Anthropic Claude Haiku 4.5 through Duck.ai web; judgments were produced independently with OpenAI GPT-5.6 Sol through ChatGPT in a fresh Judge conversation per case.",
+  "environment": "Duck.ai web Executor and ChatGPT Judge; exact session/context identifiers were not exposed",
+  "fresh_context": true,
+  "timestamp": "2026-09-07T07:35:25Z",
+  "case_ids": [
+    "REG-C04-EVIDENCE-01",
+    "REG-C04-EVIDENCE-02",
+    "REG-C04-TRANSFER-01",
+    "C05-DIAG-CONFLICT-01",
+    "REG-C04-SCOPE-01"
+  ],
+  "raw_input_packet_path": "evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai/input-evidence/capture-provenance/authority-map.yaml",
+  "raw_output_directory": "evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai/raw-output",
+  "raw_judge_output_directory": "evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai/judge-output",
+  "notes": "The timestamp is repository import/recorded time, not Executor or Judge execution time. Executor and Judge dates are 2026-09-07; exact execution and judgment timestamps were NOT_RECORDED. Release baseline tag v0.6.0-agent-ready resolves to 6408c965bb52be19495fdf827d628f483af8b012. Exact per-case submitted inputs and Judge inputs are preserved under input-evidence; Case 2 uses authoritative Attempt 02 only."
+}

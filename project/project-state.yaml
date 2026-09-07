@@ -16,9 +16,9 @@ current_diagnostic:
   status: DIAGNOSTIC
   role: CURRENT_DIAGNOSTIC
   baseline_change_allowed: false
-  evaluation_status: TWO_EXECUTOR_ENVIRONMENTS_COMPLETE
-  latest_run: c05-r0-clean-20260905-kimi-external
-  latest_run_result: 3_PASS_2_PARTIAL_MODEL_COMPLIANCE
+  evaluation_status: THREE_EXECUTOR_ENVIRONMENTS_COMPLETE
+  latest_run: c05-r1-clean-20260906-claude-haiku45-duckai
+  latest_run_result: 5_PASS
   second_model_status: COMPLETE
   independent_executor_environment_requirement: SATISFIED
   external_judge_independence: SATISFIED
@@ -26,6 +26,7 @@ current_diagnostic:
   external_executor_packet: evals/packages/candidate-05-kimi-clean-r0/executor-packet.md
   external_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
   external_run: evals/runs/c05-r0-clean-20260905-kimi-external
+  external_claude_run: evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai
 final_agentos_smoke:
   status: PASS
   protocol: audit/final-agentos-smoke-protocol.md
@@ -46,5 +47,5 @@ hosted_ci_workflow: Validate repository
 hosted_ci_evidence: OWNER_OBSERVED_PASS_GREEN
 agentos_readiness: READY
 unresolved_release_blockers: 0
-next_action: Owner release decision; review, merge, or tag only if explicitly authorized.
+next_action: Owner review of the uncommitted Candidate 05 Claude Clean R1 evidence import; commit or push only if explicitly authorized.
 private_holdout_location: repository-external AgentOS Verifier storage

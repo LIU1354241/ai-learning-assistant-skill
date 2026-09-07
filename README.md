@@ -17,7 +17,7 @@
 | Current diagnostic | Candidate 05 — Learner Evidence Conflict |
 | Candidate 05 status | `DIAGNOSTIC` |
 
-Candidate 05 is not accepted, validated, or part of baseline behavior. It has no behavioral rule file. Its next action is a clean R0 evaluation followed by failure classification.
+Candidate 05 is not accepted, validated, or part of baseline behavior. It has no behavioral rule file. Three independent Executor environments are recorded: Codex Work and Claude Haiku 4.5 passed all five cases, while external Kimi retains two `PARTIAL / MODEL_COMPLIANCE` results. Candidate 05 therefore remains diagnostic, with no verified `SKILL_RULE_GAP`.
 
 For the machine-readable and Agent-facing source of truth, start with [STATUS.md](STATUS.md), then follow [AGENTS.md](AGENTS.md).
 

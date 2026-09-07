@@ -17,7 +17,7 @@
 | 当前诊断 | Candidate 05 — Learner Evidence Conflict |
 | Candidate 05 状态 | `DIAGNOSTIC` |
 
-Candidate 05 尚未接受、尚未验证，也不是正式基线行为。它没有行为规则文件。下一步是运行 Clean R0，再对结果进行失败分类。
+Candidate 05 尚未接受、尚未验证，也不是正式基线行为。它没有行为规则文件。当前已记录三个独立 Executor 环境：Codex Work 与 Claude Haiku 4.5 的五个用例均为 `PASS`，外部 Kimi 仍保留两个 `PARTIAL / MODEL_COMPLIANCE` 结果。因此 Candidate 05 继续保持诊断状态，且没有经过验证的 `SKILL_RULE_GAP`。
 
 Agent 或维护者应先读 [STATUS.md](STATUS.md)，再按 [AGENTS.md](AGENTS.md) 的最小读取顺序工作。
 
