@@ -27,6 +27,11 @@ current_diagnostic:
   external_judge_packet: evals/packages/candidate-05-kimi-clean-r0/judge-packet.md
   external_run: evals/runs/c05-r0-clean-20260905-kimi-external
   external_claude_run: evals/runs/c05-r1-clean-20260906-claude-haiku45-duckai
+  external_claude_import_status: COMPLETE
+  external_claude_import_commit: 32256080a2d304db79876eb7d3999debc85bb467
+  external_claude_pull_request: 2
+  external_claude_pull_request_state: MERGED
+  external_claude_main_merge_commit: ef9255696fe09947b40197ce1eda0cf9b585769e
 final_agentos_smoke:
   status: PASS
   protocol: audit/final-agentos-smoke-protocol.md
@@ -42,10 +47,10 @@ final_agentos_smoke:
   raw_input: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/input.md
   raw_output: audit/agentos-smoke/agentos-handoff-final-20260905-4a52a33/output.md
 hosted_ci_status: PASS
-hosted_ci_validated_commit: 30a9c7871ba3c9f42f08bacaed573894c29adbe7
+hosted_ci_validated_commit: ef9255696fe09947b40197ce1eda0cf9b585769e
 hosted_ci_workflow: Validate repository
-hosted_ci_evidence: OWNER_OBSERVED_PASS_GREEN
+hosted_ci_evidence: OWNER_OBSERVED_PASS_SUCCESS
 agentos_readiness: READY
 unresolved_release_blockers: 0
-next_action: Owner review of the uncommitted Candidate 05 Claude Clean R1 evidence import; commit or push only if explicitly authorized.
+next_action: Candidate 05 remains open as CURRENT_DIAGNOSTIC; no behavioral Candidate proposal is justified. Await a separately authorized diagnostic or policy decision.
 private_holdout_location: repository-external AgentOS Verifier storage

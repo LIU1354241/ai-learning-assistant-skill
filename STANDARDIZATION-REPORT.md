@@ -32,7 +32,7 @@ AgentOS readiness: `READY`
 
 Unresolved release blockers: `0`
 
-The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence satisfies the two-Executor-environment requirement, and the final post-reconciliation fresh-Agent smoke test has a preserved `PASS` result. Hosted CI was independently observed by the owner as `PASS / green` for commit `30a9c7871ba3c9f42f08bacaed573894c29adbe7` in workflow `Validate repository`. No GitHub Actions run ID, run URL, timestamp, job ID, environment metadata, or other external metadata was supplied or inferred. Candidate 01/02 authoritative artifacts remain unavailable as recorded non-blocking provenance gaps, and the exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence. All AgentOS readiness gates are satisfied, and the repository is eligible for the owner's release decision.
+The repository's structural and frozen-baseline checks pass. The external Kimi Clean R0 evidence satisfies the two-Executor-environment requirement, and the final post-reconciliation fresh-Agent smoke test has a preserved `PASS` result. Hosted CI was independently observed by the owner as `PASS / Success` for final `main` commit `ef9255696fe09947b40197ce1eda0cf9b585769e`. No GitHub Actions run ID, run URL, timestamp, job ID, environment metadata, or other external metadata was supplied or inferred. Candidate 01/02 authoritative artifacts remain unavailable as recorded non-blocking provenance gaps, and the exact original untracked Candidate 05 R0 bytes remain preserved as immutable historical evidence. All AgentOS readiness gates are satisfied, and the repository is eligible for the owner's release decision.
 
 No release tag was created.
 
@@ -116,6 +116,7 @@ No release tag was created.
 - Preserved the Cases 3–5 Judge schema-only format deviations verbatim and recorded them as non-verdict observations.
 - Recorded unavailable Executor/Judge timestamps and context identifiers as `NOT_RECORDED` and `NOT_EXPOSED`; no value was invented.
 - Kept Candidate 05 `DIAGNOSTIC` because the valid Kimi `PARTIAL / MODEL_COMPLIANCE` results remain part of the evidence set.
+- Completed repository integration: import commit `32256080a2d304db79876eb7d3999debc85bb467` was merged through PR #2, `Record Claude Candidate 05 Clean R1 evidence`, into `main` at `ef9255696fe09947b40197ce1eda0cf9b585769e`; the owner observed Hosted CI as `PASS / Success` on that final `main` commit.
 
 ## Candidate 05 evaluation status
 
@@ -245,4 +246,4 @@ Phase 3C is recorded by the commit containing this report update with message `t
 
 ## Release decision
 
-The final fresh-Agent smoke evidence and Hosted CI acceptance evidence are complete and passing, with no unresolved release blockers. The uncommitted Candidate 05 Claude Clean R1 evidence import is ready for owner review; commit, push, merge, or tag only if explicitly authorized. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.
+The final fresh-Agent smoke evidence and Hosted CI acceptance evidence are complete and passing, with no unresolved release blockers. The Candidate 05 Claude Clean R1 evidence-import workstream is complete on `main`. Candidate 05 remains open as `CURRENT_DIAGNOSTIC` because the valid Kimi `PARTIAL / MODEL_COMPLIANCE` evidence remains; no behavioral Candidate proposal is justified. Await a separately authorized diagnostic or policy decision. Candidate 04 remains the frozen formal baseline, and future repository `HEAD` is not required to equal its freeze provenance commit.
