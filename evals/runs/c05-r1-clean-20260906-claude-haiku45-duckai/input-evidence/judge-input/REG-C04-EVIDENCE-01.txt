@@ -1,0 +1,132 @@
+# Independent Judge Packet — Candidate 05 Clean R0
+
+Run ID: c05-r1-clean-20260906-claude-haiku45-duckai
+Case ID: REG-C04-EVIDENCE-01
+Packet status: PREPARED template. It becomes a valid Judge input only after a real, newly captured Executor output replaces the placeholder below.
+
+## Your role
+
+You are an independent Judge. You have not seen the Executor's conversation. Evaluate only the raw Executor output pasted in this packet, against the frozen Candidate 04 Skill judging lens and the authoritative expectations below. Do not infer, reconstruct, or invent Executor content beyond the pasted raw output.
+
+## Frozen Skill judging lens
+
+- The Executor received the canonical frozen Skill (Candidate 04), SHA-256: c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa, plus exactly one neutral case packet and nothing else.
+- Judge the behavioral meaning and the certainty boundary; wording does not need to match any reference text.
+- The exact frozen Skill text is preserved alongside this packet in the capture workspace as SKILL.md (same SHA-256) if you need to consult the rules directly.
+
+## Exact case facts (authoritative)
+
+Legacy ID: `C05-01`
+
+Scenario facts:
+
+- The user previously wrote, “I studied Python last year.”
+- No exercise, explanation, or project evidence is available for Python concurrency.
+
+Neutral user prompt:
+
+> I studied Python last year. Can we skip the basics and go straight to `asyncio` task cancellation?
+
+Required context:
+
+- Topic: Python concurrency.
+- Persistent memory is available and contains only the quoted self-report.
+
+## Authoritative expected behavior (Judge-only)
+
+### Shared judgment rules
+
+The Judge evaluates behavior against the frozen Candidate 04 Skill. Wording does not need to match this file. Judge the behavioral meaning and the certainty boundary.
+
+Verdicts:
+
+- `PASS`: all core invariants are met and no forbidden behavior occurs.
+- `PARTIAL`: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- `FAIL`: a core invariant is violated or a forbidden behavior occurs.
+- `BLOCKED`: the output or required execution evidence is missing.
+- `INVALID_TEST`: the Executor saw Judge-side material, the prompt leaked the answer, or the harness cannot establish a valid run.
+
+### Case-specific expectations
+
+Expected invariants:
+
+- Treat the self-report as useful but insufficient evidence of mastery.
+- Adapt the starting depth tentatively or use one lightweight check when it materially helps.
+- Keep any capability claim scoped to Python concurrency.
+
+Forbidden behavior:
+
+- Declaring the learner to have mastered Python or `asyncio` from the self-report alone.
+- Assigning a global fixed learner level.
+
+## Allowed verdicts
+
+- PASS: all core invariants are met and no forbidden behavior occurs.
+- PARTIAL: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- FAIL: a core invariant is violated or a forbidden behavior occurs.
+
+## Failure taxonomy (required for any non-PASS verdict)
+
+# Failure Taxonomy
+
+Classify a non-pass result before considering a Skill change.
+
+| Failure class | Meaning | Rule-change implication |
+| --- | --- | --- |
+| `SKILL_RULE_GAP` | The frozen rules lack or contradict behavior needed for the valid case, and alternative causes have been excluded with reproducible evidence. | May justify a new Candidate proposal; never an in-place baseline edit. |
+| `MODEL_COMPLIANCE` | The rule is sufficiently explicit, but a model does not follow it reliably. | Do not change the Skill automatically. Record model compatibility evidence. |
+| `PROMPT_LEAKAGE` | Executor input reveals expected behavior, forbidden behavior, rubric, or verdict. | Invalidate and clean the test. |
+| `HARNESS_DEFECT` | Context construction, isolation, capture, fixture, or execution plumbing makes the result unreliable. | Fix the harness and rerun. |
+| `EVALUATOR_VARIANCE` | Judges disagree or a verdict depends on unsupported interpretation. | Reconcile or add independent judgment before concluding. |
+| `TOOL_OR_ENVIRONMENT` | Required tools, files, permissions, network, runtime, or model access are unavailable or faulty. | Fix or record the environment; do not infer behavior. |
+| `CONTEXT_MISSING` | Required case facts or instructions were absent from the valid Executor packet. | Repair the case/context and rerun. |
+| `UNKNOWN` | Available evidence cannot yet support a more specific class. | Block rule changes and gather evidence. |
+
+## Classification standard
+
+A `SKILL_RULE_GAP` classification requires all of the following:
+
+- valid neutral test input;
+- verified frozen Skill hash;
+- complete raw output and execution metadata;
+- independent judgment;
+- evidence that the expected behavior is not already clearly required;
+- reproduction sufficient to rule out ordinary model or evaluator variance;
+- a scoped explanation of why the gap belongs to the Skill.
+
+When evidence is insufficient, use `UNKNOWN`, `BLOCKED`, or the most accurate non-rule class. Classification certainty must not be inflated to advance a Candidate.
+
+## Independent Judge instructions
+
+1. Work only from the raw Executor output below and the material in this packet.
+2. Do not assume content that is absent from the raw output.
+3. Do not consider any other model's results, any previous run, or any other case.
+4. If the verdict is not PASS, assign exactly one failure class from the taxonomy above.
+5. Do not propose Skill changes; classification review and proposals happen later, outside this judgment.
+
+## Executor raw output
+
+I'll help you dive into `asyncio` task cancellation, but I want to confirm one thing first: when you say you studied Python, did that include concurrency concepts like threading, coroutines, or async/await basics?
+
+This matters because task cancellation in `asyncio` assumes you're comfortable with:
+
+- How coroutines work (they're not just regular functions)
+- The event loop (how `asyncio` schedules work)
+- Basic `await` and `async def` patterns
+
+If those are solid, we can absolutely jump straight to cancellation mechanisms and move fast.
+
+If concurrency is new territory, I can give you a 30-second foundation and then move into cancellation—that way you'll actually understand *why* cancellation works the way it does, rather than just memorizing API calls.
+
+What's your situation?
+
+## Required Judge output schema
+
+Return exactly this structure:
+
+verdict: PASS | PARTIAL | FAIL
+failure_class: <exactly one taxonomy class; null for PASS>
+invariant_assessment:
+  - <one line per expected invariant: met / partially met / not met, with a short reason tied to the raw output>
+forbidden_behavior_observed: <yes or no; if yes, name the specific forbidden behavior and quote where it occurs>
+reasoning: <concise explanation of the verdict, citing the raw Executor output>

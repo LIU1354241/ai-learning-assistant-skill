@@ -1,0 +1,166 @@
+# Independent Judge Packet — Candidate 05 Clean R0
+
+Run ID: c05-r1-clean-20260906-claude-haiku45-duckai
+Case ID: C05-DIAG-CONFLICT-01
+Packet status: PREPARED template. It becomes a valid Judge input only after a real, newly captured Executor output replaces the placeholder below.
+
+## Your role
+
+You are an independent Judge. You have not seen the Executor's conversation. Evaluate only the raw Executor output pasted in this packet, against the frozen Candidate 04 Skill judging lens and the authoritative expectations below. Do not infer, reconstruct, or invent Executor content beyond the pasted raw output.
+
+## Frozen Skill judging lens
+
+- The Executor received the canonical frozen Skill (Candidate 04), SHA-256: c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa, plus exactly one neutral case packet and nothing else.
+- Judge the behavioral meaning and the certainty boundary; wording does not need to match any reference text.
+- The exact frozen Skill text is preserved alongside this packet in the capture workspace as SKILL.md (same SHA-256) if you need to consult the rules directly.
+
+## Exact case facts (authoritative)
+
+Legacy ID: `C05-04`
+
+Scenario facts:
+
+- One month ago, the user independently built a working local RAG demo and correctly explained why chunking affects retrieval.
+- Today, the user stated, “RAG always searches the public internet for every answer.”
+
+Neutral user prompt:
+
+> Based on those two observations, what can you tell about my current understanding of RAG, and how would you explain the topic to me now?
+
+Required context:
+
+- Topic: retrieval-augmented generation.
+- Both observations are authentic and refer to the same learner.
+- No newer assessment is available.
+
+## Authoritative expected behavior (Judge-only)
+
+### Shared judgment rules
+
+The Judge evaluates behavior against the frozen Candidate 04 Skill. Wording does not need to match this file. Judge the behavioral meaning and the certainty boundary.
+
+Verdicts:
+
+- `PASS`: all core invariants are met and no forbidden behavior occurs.
+- `PARTIAL`: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- `FAIL`: a core invariant is violated or a forbidden behavior occurs.
+- `BLOCKED`: the output or required execution evidence is missing.
+- `INVALID_TEST`: the Executor saw Judge-side material, the prompt leaked the answer, or the harness cannot establish a valid run.
+
+### Case-specific expectations
+
+Expected invariants:
+
+- Retain both the older strong evidence and the newer contradictory observation.
+- Distinguish a stable capability profile from the current working inference.
+- Avoid silently choosing one observation as the complete truth.
+- Explain at a depth responsive to the current misconception while recognizing the earlier demonstrated experience.
+- Use clarification or revalidation language proportionate to the conflict.
+
+Forbidden behavior:
+
+- Deleting, ignoring, or silently overwriting either observation.
+- Declaring full mastery or broad loss of ability from the two observations.
+- Turning the conflict into a fixed level, numerical score, or permanent memory update.
+
+Diagnostic focus:
+
+This case tests whether Candidate 04 gives sufficiently clear behavior when credible old and new learner evidence conflict. A failure is not automatically a `SKILL_RULE_GAP`; classification must precede any proposal.
+
+## Allowed verdicts
+
+- PASS: all core invariants are met and no forbidden behavior occurs.
+- PARTIAL: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- FAIL: a core invariant is violated or a forbidden behavior occurs.
+
+## Failure taxonomy (required for any non-PASS verdict)
+
+# Failure Taxonomy
+
+Classify a non-pass result before considering a Skill change.
+
+| Failure class | Meaning | Rule-change implication |
+| --- | --- | --- |
+| `SKILL_RULE_GAP` | The frozen rules lack or contradict behavior needed for the valid case, and alternative causes have been excluded with reproducible evidence. | May justify a new Candidate proposal; never an in-place baseline edit. |
+| `MODEL_COMPLIANCE` | The rule is sufficiently explicit, but a model does not follow it reliably. | Do not change the Skill automatically. Record model compatibility evidence. |
+| `PROMPT_LEAKAGE` | Executor input reveals expected behavior, forbidden behavior, rubric, or verdict. | Invalidate and clean the test. |
+| `HARNESS_DEFECT` | Context construction, isolation, capture, fixture, or execution plumbing makes the result unreliable. | Fix the harness and rerun. |
+| `EVALUATOR_VARIANCE` | Judges disagree or a verdict depends on unsupported interpretation. | Reconcile or add independent judgment before concluding. |
+| `TOOL_OR_ENVIRONMENT` | Required tools, files, permissions, network, runtime, or model access are unavailable or faulty. | Fix or record the environment; do not infer behavior. |
+| `CONTEXT_MISSING` | Required case facts or instructions were absent from the valid Executor packet. | Repair the case/context and rerun. |
+| `UNKNOWN` | Available evidence cannot yet support a more specific class. | Block rule changes and gather evidence. |
+
+## Classification standard
+
+A `SKILL_RULE_GAP` classification requires all of the following:
+
+- valid neutral test input;
+- verified frozen Skill hash;
+- complete raw output and execution metadata;
+- independent judgment;
+- evidence that the expected behavior is not already clearly required;
+- reproduction sufficient to rule out ordinary model or evaluator variance;
+- a scoped explanation of why the gap belongs to the Skill.
+
+When evidence is insufficient, use `UNKNOWN`, `BLOCKED`, or the most accurate non-rule class. Classification certainty must not be inflated to advance a Candidate.
+
+## Independent Judge instructions
+
+1. Work only from the raw Executor output below and the material in this packet.
+2. Do not assume content that is absent from the raw output.
+3. Do not consider any other model's results, any previous run, or any other case.
+4. If the verdict is not PASS, assign exactly one failure class from the taxonomy above.
+5. Do not propose Skill changes; classification review and proposals happen later, outside this judgment.
+
+## Executor raw output
+
+# Understanding Your Current RAG Knowledge
+
+**You have working implementation knowledge but appear to hold a significant misconception about retrieval scope.**
+
+Your earlier demonstration—building a working local RAG system and correctly explaining chunking's effect on retrieval—shows you understand:
+
+- How to integrate external knowledge into generation workflows
+- That retrieval quality depends on document segmentation strategy
+- Practical implementation of the retrieval pipeline
+
+However, your statement that "RAG always searches the public internet for every answer" contradicts what you've already built. **This suggests the misconception emerged after your hands-on work**, possibly from exposure to descriptions that conflated RAG with web-search-augmented systems.
+
+---
+
+## Clarifying the Core Confusion
+
+**RAG doesn't inherently search the internet.** RAG is a *retrieval mechanism pattern*—it retrieves from whatever knowledge base you connect it to. That could be:
+
+- Local documents (which you already demonstrated)
+- Private databases
+- Corporate wikis
+- Public internet (if you explicitly configure that)
+- Your own files
+
+The retrieval source is **your choice**, not a requirement of RAG itself.
+
+Your local demo worked precisely because you controlled what the system could retrieve from. If RAG "always" searched the internet, your local-only system would have failed—but it didn't.
+
+---
+
+## Why This Matters
+
+This gap is worth addressing because:
+
+1. **Implementation-level understanding is solid**, so this isn't a foundational misunderstanding.
+2. **The misconception could lead to wrong architectural choices**—e.g., assuming you can't use RAG for private data, or that you need internet access to run RAG systems.
+3. **You have evidence from your own project that contradicts the misconception**, which makes it easier to self-correct.
+
+Does this distinction land clearly, or does part of it still feel inconsistent with something you've read or heard about RAG?
+
+## Required Judge output schema
+
+Return exactly this structure:
+
+verdict: PASS | PARTIAL | FAIL
+failure_class: <exactly one taxonomy class; null for PASS>
+invariant_assessment:
+  - <one line per expected invariant: met / partially met / not met, with a short reason tied to the raw output>
+forbidden_behavior_observed: <yes or no; if yes, name the specific forbidden behavior and quote where it occurs>
+reasoning: <concise explanation of the verdict, citing the raw Executor output>

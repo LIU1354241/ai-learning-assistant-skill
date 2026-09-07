@@ -1,0 +1,22 @@
+case_id: REG-C04-TRANSFER-01
+
+executor_provider: Anthropic
+executor_model: Claude Haiku 4.5
+executor_environment: Duck.ai web
+instruction_delivery: single-turn text prompt
+fresh_context: true
+
+execution_date: 2026-09-07
+execution_timestamp: NOT_RECORDED
+executor_context_identifier: NOT_EXPOSED
+
+judge_provider: OpenAI
+judge_model: GPT-5.6 Sol
+judge_environment: ChatGPT
+judge_fresh_context: true
+
+judge_date: 2026-09-07
+judge_timestamp: NOT_RECORDED
+judge_context_identifier: NOT_EXPOSED
+
+skill_sha256: c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa

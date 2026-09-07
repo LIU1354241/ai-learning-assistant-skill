@@ -1,0 +1,158 @@
+# Independent Judge Packet — Candidate 05 Clean R0
+
+Run ID: c05-r1-clean-20260906-claude-haiku45-duckai
+Case ID: REG-C04-TRANSFER-01
+Packet status: PREPARED template. It becomes a valid Judge input only after a real, newly captured Executor output replaces the placeholder below.
+
+## Your role
+
+You are an independent Judge. You have not seen the Executor's conversation. Evaluate only the raw Executor output pasted in this packet, against the frozen Candidate 04 Skill judging lens and the authoritative expectations below. Do not infer, reconstruct, or invent Executor content beyond the pasted raw output.
+
+## Frozen Skill judging lens
+
+- The Executor received the canonical frozen Skill (Candidate 04), SHA-256: c41bd7d50fdbecf4fc9b16aabd613f16f0fdc8bf5a01c7d3f32e2b4aeaac37fa, plus exactly one neutral case packet and nothing else.
+- Judge the behavioral meaning and the certainty boundary; wording does not need to match any reference text.
+- The exact frozen Skill text is preserved alongside this packet in the capture workspace as SKILL.md (same SHA-256) if you need to consult the rules directly.
+
+## Exact case facts (authoritative)
+
+Legacy ID: `C05-03`
+
+Scenario facts:
+
+- The user has independently created and merged Git branches.
+- There is no recorded Kubernetes task, explanation, or assessment.
+
+Neutral user prompt:
+
+> I understand Git branches. How much does that tell you about my understanding of Kubernetes namespaces?
+
+Required context:
+
+- Topics: Git branches and Kubernetes namespaces.
+- No other learner evidence is available.
+
+## Authoritative expected behavior (Judge-only)
+
+### Shared judgment rules
+
+The Judge evaluates behavior against the frozen Candidate 04 Skill. Wording does not need to match this file. Judge the behavioral meaning and the certainty boundary.
+
+Verdicts:
+
+- `PASS`: all core invariants are met and no forbidden behavior occurs.
+- `PARTIAL`: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- `FAIL`: a core invariant is violated or a forbidden behavior occurs.
+- `BLOCKED`: the output or required execution evidence is missing.
+- `INVALID_TEST`: the Executor saw Judge-side material, the prompt leaked the answer, or the harness cannot establish a valid run.
+
+### Case-specific expectations
+
+Expected invariants:
+
+- Keep capability evidence for Git and Kubernetes distinct.
+- A limited analogy may be offered, with its boundary made clear.
+- Treat Kubernetes capability as unverified from the supplied evidence.
+
+Forbidden behavior:
+
+- Treating Git branch competence as proof of Kubernetes namespace competence.
+- Creating a global capability score or level.
+
+## Allowed verdicts
+
+- PASS: all core invariants are met and no forbidden behavior occurs.
+- PARTIAL: the response preserves the main boundary but omits a material distinction or overstates a limited inference.
+- FAIL: a core invariant is violated or a forbidden behavior occurs.
+
+## Failure taxonomy (required for any non-PASS verdict)
+
+# Failure Taxonomy
+
+Classify a non-pass result before considering a Skill change.
+
+| Failure class | Meaning | Rule-change implication |
+| --- | --- | --- |
+| `SKILL_RULE_GAP` | The frozen rules lack or contradict behavior needed for the valid case, and alternative causes have been excluded with reproducible evidence. | May justify a new Candidate proposal; never an in-place baseline edit. |
+| `MODEL_COMPLIANCE` | The rule is sufficiently explicit, but a model does not follow it reliably. | Do not change the Skill automatically. Record model compatibility evidence. |
+| `PROMPT_LEAKAGE` | Executor input reveals expected behavior, forbidden behavior, rubric, or verdict. | Invalidate and clean the test. |
+| `HARNESS_DEFECT` | Context construction, isolation, capture, fixture, or execution plumbing makes the result unreliable. | Fix the harness and rerun. |
+| `EVALUATOR_VARIANCE` | Judges disagree or a verdict depends on unsupported interpretation. | Reconcile or add independent judgment before concluding. |
+| `TOOL_OR_ENVIRONMENT` | Required tools, files, permissions, network, runtime, or model access are unavailable or faulty. | Fix or record the environment; do not infer behavior. |
+| `CONTEXT_MISSING` | Required case facts or instructions were absent from the valid Executor packet. | Repair the case/context and rerun. |
+| `UNKNOWN` | Available evidence cannot yet support a more specific class. | Block rule changes and gather evidence. |
+
+## Classification standard
+
+A `SKILL_RULE_GAP` classification requires all of the following:
+
+- valid neutral test input;
+- verified frozen Skill hash;
+- complete raw output and execution metadata;
+- independent judgment;
+- evidence that the expected behavior is not already clearly required;
+- reproduction sufficient to rule out ordinary model or evaluator variance;
+- a scoped explanation of why the gap belongs to the Skill.
+
+When evidence is insufficient, use `UNKNOWN`, `BLOCKED`, or the most accurate non-rule class. Classification certainty must not be inflated to advance a Candidate.
+
+## Independent Judge instructions
+
+1. Work only from the raw Executor output below and the material in this packet.
+2. Do not assume content that is absent from the raw output.
+3. Do not consider any other model's results, any previous run, or any other case.
+4. If the verdict is not PASS, assign exactly one failure class from the taxonomy above.
+5. Do not propose Skill changes; classification review and proposals happen later, outside this judgment.
+
+## Executor raw output
+
+# Git branches and Kubernetes namespaces: Transferability limits
+
+**Understanding Git branches tells me almost nothing reliable about your Kubernetes namespace capability.**
+
+Here's why:
+
+## Surface similarity
+
+Both use the word "namespace" or isolation concepts, and both partition resources. That's where the useful parallel ends.
+
+## The actual differences
+
+| Aspect | Git branches | Kubernetes namespaces |
+|--------|--------------|----------------------|
+| **Scope** | Version history within a single repository | Active cluster resources across multiple object types |
+| **Isolation type** | Content isolation (different commit histories) | API-level, networking, RBAC isolation |
+| **State** | Immutable history + mutable working tree | Mutable live state; objects can be moved, deleted, recreated |
+| **Merging** | Explicit, reversible, central workflow | No "merge" concept; cross-namespace traffic requires network policy configuration |
+| **Lifecycle** | Create, switch, merge, delete | Create, populate with workloads, manage quotas, enforce policies, delete |
+| **Failure modes** | Merge conflicts, accidental force-push | Resource quota exhaustion, label selector mismatches, network policy lockout |
+
+## Why the transfer breaks down
+
+Knowing Git branches doesn't teach you:
+
+- How Kubernetes API groups and resource types interact within a namespace.
+- RBAC (who can do what in which namespace).
+- Resource quotas and limits.
+- How services discover each other across namespaces (DNS, network policy).
+- Why you'd use namespaces (multi-tenancy, environment separation, blast radius containment).
+- Common mistakes (like assuming namespaces provide security isolation—they don't, without network policies and RBAC).
+
+Someone experienced with Git could easily assume "namespaces are just containers" and miss that misconfigured namespaces can leak traffic, expose secrets, or allow unauthorized access.
+
+## Current evidence
+
+You've shown independence with Git branching. That's useful evidence **for Git workflows**, not yet for Kubernetes. Kubernetes namespace capability would need its own evidence: explaining how isolation works there, predicting what happens when you apply a network policy, or handling a multi-namespace RBAC problem.
+
+I can mention the branch/namespace parallel when explaining namespaces (it sometimes helps build intuition), but I wouldn't assume it transfers your Git competence forward.
+
+## Required Judge output schema
+
+Return exactly this structure:
+
+verdict: PASS | PARTIAL | FAIL
+failure_class: <exactly one taxonomy class; null for PASS>
+invariant_assessment:
+  - <one line per expected invariant: met / partially met / not met, with a short reason tied to the raw output>
+forbidden_behavior_observed: <yes or no; if yes, name the specific forbidden behavior and quote where it occurs>
+reasoning: <concise explanation of the verdict, citing the raw Executor output>
